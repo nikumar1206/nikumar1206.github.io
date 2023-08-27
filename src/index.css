@@ -1,0 +1,221 @@
+@import "normalize.css";
+@import "projects.css";
+:root {
+	font-family: "M PLUS Rounded 1c", sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+
+	--light-bg: #f1e7db;
+	--dark-bg: #202023;
+	--light-text: #f0f0f0;
+	--teal: #88ccca;
+	--mteal: #5cb1af;
+	--dteal: #319795;
+	--blue: #1064a4;
+	--gradient-colors: rgb(137, 137, 244) 0%, rgb(165, 124, 231) 13%,
+		rgb(208, 135, 253) 24%, rgb(208, 150, 253) 34%, hsl(320deg 100% 72%) 43%,
+		hsl(340deg 100% 78%) 52%, hsl(0deg 95% 85%) 60%, hsl(335deg 84% 84%) 68%,
+		hsl(289deg 57% 82%) 75%, hsl(234deg 100% 86%) 82%, hsl(220deg 100% 84%) 88%,
+		hsl(212deg 100% 81%) 94%, hsl(206deg 100% 79%) 100%;
+	color: var(--light-text);
+	background-color: var(--light-bg);
+	overflow-x: hidden;
+}
+
+.toggle-btn {
+	opacity: 1;
+	position: relative;
+	border-radius: 5px;
+	width: 40px;
+	height: 25px;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	transition: opacity 0.3s ease 0s;
+	border: none;
+	outline: none;
+	background: none;
+	cursor: pointer;
+	padding: 0px;
+	appearance: none;
+}
+.dark {
+	background-color: var(--dark-bg);
+}
+.light {
+	background-color: var(--light-bg);
+}
+
+.div-toggle-btn-dark {
+	position: relative;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	border: 4px solid var(--theme-ui-colors-toggleIcon, var(--light-text));
+	background-color: var(--theme-ui-colors-toggleIcon, var(--light-text));
+	transform: scale(0.55);
+	transition: all 0.45s ease 0s;
+	overflow: visible;
+	box-shadow: none;
+}
+
+.div-toggle-btn-dark::before {
+	content: "";
+	position: absolute;
+	right: -9px;
+	top: -9px;
+	height: 24px;
+	width: 24px;
+	border: 2px solid var(--theme-ui-colors-toggleIcon, var(--light-text));
+	border-radius: 50%;
+	transform: translate(14px, -14px);
+	opacity: 0;
+	transition: transform 0.45s ease 0s;
+}
+
+.div-toggle-btn-dark::after {
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	margin: -4px 0px 0px -4px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	box-shadow: 0 -23px 0 var(--theme-ui-colors-toggleIcon, var(--light-text)),
+		0 23px 0 var(--theme-ui-colors-toggleIcon, var(--light-text)),
+		23px 0 0 var(--theme-ui-colors-toggleIcon, var(--light-text)),
+		-23px 0 0 var(--theme-ui-colors-toggleIcon, var(--light-text)),
+		15px 15px 0 var(--theme-ui-colors-toggleIcon, var(--light-text)),
+		-15px 15px 0 var(--theme-ui-colors-toggleIcon, var(--light-text)),
+		15px -15px 0 var(--theme-ui-colors-toggleIcon, var(--light-text)),
+		-15px -15px 0 var(--theme-ui-colors-toggleIcon, var(--light-text));
+	transform: scale(1);
+	transition: all 0.35s ease 0s;
+}
+
+.div-toggle-btn-light {
+	position: relative;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	border: none;
+	background-color: var(--theme-ui-colors-transparent, transparent);
+	transform: scale(1);
+	transition: all 0.45s ease 0s;
+	overflow: hidden;
+	box-shadow: inset 8px -8px 0px 0px var(--theme-ui-colors-toggleIcon, #2d3748);
+}
+
+.div-toggle-btn-light::before {
+	content: "";
+	position: absolute;
+	right: -9px;
+	top: -9px;
+	height: 24px;
+	width: 24px;
+	border: none;
+	border-radius: 50%;
+	transform: translate(0px, 0px);
+	opacity: 1;
+	transition: transform 0.45s ease 0s;
+}
+.div-toggle-btn-light::after {
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	margin: -4px 0px 0px -4px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	box-shadow: 0 -23px 0 var(--theme-ui-colors-toggleIcon, #2d3748),
+		0 23px 0 var(--theme-ui-colors-toggleIcon, #2d3748),
+		23px 0 0 var(--theme-ui-colors-toggleIcon, #2d3748),
+		-23px 0 0 var(--theme-ui-colors-toggleIcon, #2d3748),
+		15px 15px 0 var(--theme-ui-colors-toggleIcon, #2d3748),
+		-15px 15px 0 var(--theme-ui-colors-toggleIcon, #2d3748),
+		15px -15px 0 var(--theme-ui-colors-toggleIcon, #2d3748),
+		-15px -15px 0 var(--theme-ui-colors-toggleIcon, #2d3748);
+	transform: scale(0);
+	transition: all 0.35s ease 0s;
+}
+
+.typewriter-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 7rem;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.link-underline {
+		border-bottom-width: 0;
+		background-image: linear-gradient(transparent, transparent),
+			linear-gradient(black, black);
+		background-size: 0 2px;
+		background-position: 100% 100%;
+		background-repeat: no-repeat;
+		transition: background-size 0.2s ease-in-out;
+	}
+
+	.link-underline-black {
+		background-image: linear-gradient(transparent, transparent),
+			linear-gradient(#f2c, #f2c);
+	}
+
+	.link-underline:hover {
+		background-size: 100% 2px;
+		background-position: 0 100%;
+	}
+
+	.footer {
+		box-sizing: border-box;
+		display: flex;
+		-webkit-box-pack: justify;
+		justify-content: space-between;
+		margin-top: 2rem;
+		padding-bottom: 0.5rem;
+		background: var(--light-bg);
+		color: #5f6c80;
+		flex-direction: column;
+		border-top-style: solid;
+		border-top-width: 1px;
+		border-top-color: #cbd5e0;
+		padding-top: 1rem;
+	}
+	.footer-dark {
+		box-sizing: border-box;
+		display: flex;
+		-webkit-box-pack: justify;
+		justify-content: space-between;
+		margin-top: 2rem;
+		padding-bottom: 0.5rem;
+		background: var(--dark-bg);
+		color: #7f8ea3;
+		flex-direction: column;
+		border-top-style: solid;
+		border-top-width: 1px;
+		border-top-color: #2d3748;
+		padding-top: 1rem;
+	}
+
+	.link {
+		@apply px-2 py-1 transition-colors ease-in-out duration-300 text-[1.2rem];
+	}
+	.headers {
+		@apply font-semibold leading-[1.33rem] underline underline-offset-4 decoration-[#525252] decoration-[4px] pb-2 text-xl;
+	}
+}
