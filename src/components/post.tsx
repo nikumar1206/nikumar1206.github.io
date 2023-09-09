@@ -1,56 +1,53 @@
-import { motion } from "framer-motion";
-import { FiArrowRight } from "react-icons/fi";
+import ReactMarkdown from "react-markdown";
+import { useTheme } from "../hooks/themeHook";
+import { CodeBlock } from "./codeBlock";
 import { PostData } from "./posts";
-const Post = ({ post }: { post: PostData }) => {
-	const { title } = post;
+
+interface PostParams {
+	readonly id?: string;
+	content: string;
+	post: PostData | null;
+}
+
+const Post = ({ content, post }: PostParams) => {
+	const { theme } = useTheme();
+
+	const isDark = theme === "dark";
 
 	return (
-		<div className="p-0.5 rounded-lg relative overflow-hidden cursor-pointer">
-			<motion.div
-				initial={false}
-				className="p-6 rounded-[7px] bg-white flex flex-col justify-between relative z-20"
-			>
-				<div>
-					<motion.p
-						initial={false}
-						animate={{
-							color: "rgba(0, 0, 0, 0)",
-						}}
-						className="text-xl font-medium w-fit bg-gradient-to-r from-[var(--mteal)] to-[var(--dteal)] bg-clip-text"
-					>
-						{title}
-					</motion.p>
-					<motion.p
-						initial={false}
-						animate={{
-							opacity: 1,
-						}}
-						className="mt-4 bg-gradient-to-r from-[var(--mteal)] to-[var(--dteal)] bg-clip-text text-transparent"
-					>
-						{post.description}
-					</motion.p>
-				</div>
-
-				<motion.button
-					initial={false}
-					onClick={() => window.open(post.link, "_blank")}
-					animate={{
-						opacity: 1,
-					}}
-					className="-ml-6 -mr-6 -mb-6 mt-4 py-2 rounded-b-md flex items-center justify-center gap-1 group transition-[gap] bg-gradient-to-r from-[var(--mteal)] to-[var(--dteal)] text-white"
-				>
-					<span>Read More</span>
-					<FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-				</motion.button>
-			</motion.div>
-			<motion.div
-				initial={false}
-				animate={{
-					opacity: 1,
+		<div
+			className={`max-w-[68rem] mx-auto p-6 ${
+				isDark ? "" : "bg-white"
+			} rounded-lg shadow-md mt-10 font-posts`}
+		>
+			<span className="float-right">{post?.date}</span>
+			<ReactMarkdown
+				className={`max-w-none prose-pre:p-0 prose-h2:mt-[1em] prose-h1:text-5xl ${
+					isDark ? "prose prose-invert prose-fuchsia" : "prose prose-fuschia"
+				}}`}
+				components={{
+					code({ inline, className, children, ...props }) {
+						const match = /language-(\w+)/.exec(className ?? "");
+						return !inline && match ? (
+							<CodeBlock
+								language={match[1] ? match[1] : ""}
+								value={String(children).replace(/\n$/, "")}
+								{...props}
+							/>
+						) : (
+							<code
+								{...props}
+								style={{ color: isDark ? "#ff63c3" : "#e60073" }}
+								className={className}
+							>
+								{children}
+							</code>
+						);
+					},
 				}}
-				className="absolute inset-0 z-10 bg-gradient-to-r from-[var(--mteal)] to-[var(--dteal)]"
-			/>
-			<div className="absolute inset-0 z-0 bg-slate-200" />
+			>
+				{content}
+			</ReactMarkdown>
 		</div>
 	);
 };

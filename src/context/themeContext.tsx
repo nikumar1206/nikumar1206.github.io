@@ -1,6 +1,7 @@
 import { createContext } from "react";
 
 type ThemeOptions = "light" | "dark";
+type DispatchGeneric<T> = React.Dispatch<React.SetStateAction<T>>;
 
 function getOSThemePreference() {
 	const prefersDarkMode = window.matchMedia(
@@ -24,5 +25,5 @@ function setTheme(theme: ThemeOptions) {
 
 export const ThemeContext = createContext({
 	theme: checkCookie(),
-	setTheme: setTheme as React.Dispatch<React.SetStateAction<ThemeOptions>>,
+	setTheme: setTheme as DispatchGeneric<ThemeOptions>,
 });

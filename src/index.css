@@ -213,9 +213,12 @@
 	}
 
 	.link {
-		@apply px-2 py-1 transition-colors ease-in-out duration-300 text-[1.2rem];
+		@apply px-2 py-1 transition-colors ease-in-out duration-300 text-[1.1rem] hover:underline hover:transition-all;
 	}
 	.headers {
 		@apply font-semibold leading-[1.33rem] underline underline-offset-4 decoration-[#525252] decoration-[4px] pb-2 text-xl;
+	}
+	.prose-dark {
+		@apply !font-[var(--light-text)];
 	}
 }
