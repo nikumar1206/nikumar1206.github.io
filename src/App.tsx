@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Route } from "wouter";
+import { Route, Switch } from "wouter";
 import Footer from "./components/footer";
 import Nav from "./components/nav";
 import Post from "./components/post";
@@ -27,7 +27,7 @@ function App() {
 		// ! this is being fetched twice! likely due to storing the fetch result in state causing a re-render and then invoking the same call again.
 		console.count("fetch markdown file called");
 		try {
-			const res = await fetch(`../../post${id}.md`);
+			const res = await fetch(`/post${id}.md`);
 			setMarkdownContent(await res.text());
 		} catch (error) {
 			console.log(error);
@@ -44,28 +44,28 @@ function App() {
 				} h-screen w-screen`}
 			>
 				<Nav />
-
-				<Route path="/" component={Splash} />
-				<Route path="/projects" component={Projects} />
-				<Route path="/posts" component={Posts} />
-				<Route path="/post/:id">
-					{(params) => {
-						const timeStart = performance.now();
-						fetchMarkdownFile(params.id).catch((err) => {
-							console.log(err);
-						});
-						console.log(performance.now() - timeStart);
-						return (
-							<Post
-								id={params.id}
-								content={markdownContent}
-								post={
-									allPosts.find((post) => String(post.id) === params.id) ?? null
-								}
-							/>
-						);
-					}}
-				</Route>
+				<Switch>
+					<Route path="/" component={Splash} />
+					<Route path="/projects" component={Projects} />
+					<Route path="/posts" component={Posts} />
+					<Route path="/post/:id">
+						{(params) => {
+							fetchMarkdownFile(params.id).catch((err) => {
+								console.log(err);
+							});
+							return (
+								<Post
+									id={params.id}
+									content={markdownContent}
+									post={
+										allPosts.find((post) => String(post.id) === params.id) ??
+										null
+									}
+								/>
+							);
+						}}
+					</Route>
+				</Switch>
 				<Footer />
 			</div>
 		</ThemeContext.Provider>

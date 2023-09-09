@@ -6,7 +6,6 @@ import ColorModeToggle from "./themeToggle";
 const Nav = () => {
 	const [location] = useLocation();
 	const { theme } = useTheme();
-	console.log(location);
 	const isDark = theme === "dark";
 	return (
 		<div className="h-[3rem]">
