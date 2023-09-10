@@ -5,6 +5,8 @@ const ColorModeToggle = () => {
 	const isDark = theme === "dark";
 
 	const playSound = async () => {
+		new window.AudioContext(); // necessary fix audio delay on Safari
+
 		const audio = new Audio(
 			`${theme === "dark" ? "/darkMode.wav" : "/lightMode.wav"}`
 		);

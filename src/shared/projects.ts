@@ -24,6 +24,7 @@ export interface ProjectData {
 	description: string;
 	date: string;
 	imageUrl: string;
+	darkimageUrl?: string;
 	liveLink: string;
 	githubLink: string;
 	badges: Badge[];
@@ -120,6 +121,35 @@ export const allProjects: ProjectData[] = [
 			{
 				name: "Language",
 				value: "JavaScript",
+			},
+			{
+				name: "Deployment",
+				value: "GitHub Pages",
+			},
+		],
+	},
+	{
+		id: 4,
+		title: "Personal Website",
+		date: "2023-09-10",
+		description:
+			"My personal website, built with some of my favorite technologies and host to my blog. This website is always a work in progress.",
+		liveLink: "https://nikhil-kumar.tk/",
+		githubLink: "https://github.com/nikumar1206/nikumar1206.github.io",
+		imageUrl: "/portfolio.webp",
+		darkimageUrl: "/portfolio_dark.webp",
+		badges: [
+			{
+				name: "Platform",
+				value: "Web",
+			},
+			{
+				name: "Language",
+				value: "TypeScript",
+			},
+			{
+				name: "Framework",
+				value: "React",
 			},
 			{
 				name: "Deployment",

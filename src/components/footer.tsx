@@ -12,8 +12,9 @@ const Footer = () => {
 				isDark ? "footer-dark" : "footer"
 			} flex flex-row h-[3rem]`}
 		>
-			<div className="flex  justify-between">
-				© 2023 by Nikhil Kumar. All rights reserved.
+			<div className="flex gap-x-1">
+				<span>© 2023 by Nikhil Kumar </span>
+				<span className="hidden sm:inline">- All rights reserved.</span>
 			</div>
 			<div className="flex gap-x-4">
 				<div>

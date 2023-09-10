@@ -18,7 +18,7 @@ const Splash = () => {
 				src={isDark ? "/undraw_designer_night.svg" : "/undraw_designer.svg"}
 				alt=""
 			/>
-			<div className="w-[50vw]">
+			<div className="w-[75vw] md:w-[50vw]">
 				<Typewriter />
 				<Bio />
 			</div>

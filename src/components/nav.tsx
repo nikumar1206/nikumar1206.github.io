@@ -20,11 +20,13 @@ const Nav = () => {
       `}
 			>
 				<div className="flex flex-row justify-around items-center align-middle h-full">
-					<div className="flex gap-x-20">
-						<span className="font-semibold text-[1.35rem]">
+					<div className="flex lg:gap-x-20 md:gap-x-10 sm:gap-x-5">
+						<span className="font-semibold text-[1.35rem] flex justify-center">
 							<Link href="/" className="flex items-center gap-x-[0.1rem]">
 								<Gopher />
-								<span>Nikhil Kumar</span>
+								<span className="align-middle sm:inline hidden">
+									Nikhil Kumar
+								</span>
 							</Link>
 						</span>
 

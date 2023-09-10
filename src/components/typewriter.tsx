@@ -52,9 +52,9 @@ const Typewriter = () => {
 				Hi, I&apos;m <span className="text-[var(--dteal)]">Nikhil</span>
 			</span>
 			<div
-				className={`text-[2rem] font-mono text-center flex flex-col mt-6 ${
+				className={`md:text-[2rem] sm:text-[1rem] font-mono text-center flex flex-col mt-6 ${
 					isDark ? "border-[#F0F0F0]" : "border-[black]"
-				} border-r-[3px] pr-1.5 min-h-[48px]`}
+				} border-r-[3px] pr-1.5 md:min-h-[48px] sm:min-h-[20px] min-h-[20px]`}
 			>
 				{displayText}
 			</div>

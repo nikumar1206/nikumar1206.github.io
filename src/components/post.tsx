@@ -27,7 +27,6 @@ const Post = ({ content, post }: PostParams) => {
 				}}`}
 				components={{
 					img({ ...props }) {
-						console.log(props);
 						return (
 							<img
 								{...props}

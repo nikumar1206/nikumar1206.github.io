@@ -18,7 +18,7 @@ const Bio = () => {
 				performant backends. In my free time, I enjoy playing tennis,
 				weightlifting, and spending time with my family.
 			</span>
-			<div className="flex justify-end gap-x-3 w-[90%]">
+			<div className="flex flex-col lg:flex-row sm:flex-col gap-y-3 justify-end gap-x-3 w-[90%]">
 				<a
 					href="https://drive.google.com/file/d/1Dcz1nOLtwLO9bXxG7dD64-GCE5xsaA07/view?usp=sharing"
 					target="_blank"
