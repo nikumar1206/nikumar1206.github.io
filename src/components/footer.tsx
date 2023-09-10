@@ -21,6 +21,7 @@ const Footer = () => {
 						href="https://twitter.com/nick_kumar_"
 						target="_blank"
 						rel="noopener noreferrer"
+						aria-label="Twitter"
 					>
 						<FiTwitter className="text-[1.4rem]" />
 					</a>
@@ -29,6 +30,7 @@ const Footer = () => {
 					href="https://github.com/nikumar1206"
 					target="_blank"
 					rel="noopener noreferrer"
+					aria-label="GitHub"
 				>
 					<FiGithub className="text-[1.4rem]" />
 				</a>
@@ -36,6 +38,7 @@ const Footer = () => {
 					href="https://medium.com/@nikumar1206"
 					target="_blank"
 					rel="noopener noreferrer"
+					aria-label="Medium"
 				>
 					<ImNewspaper className="text-[1.4rem]" />
 				</a>
@@ -43,6 +46,7 @@ const Footer = () => {
 					href="https://www.linkedin.com/in/nikhilk99/"
 					target="_blank"
 					rel="noopener noreferrer"
+					aria-label="LinkedIn"
 				>
 					<FaLinkedinIn className="text-[1.4rem]" />
 				</a>

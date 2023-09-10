@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import { Link } from "wouter";
-import { PostData } from "./posts";
+import { PostData } from "../shared/posts";
 const Postcard = ({ post }: { post: PostData }) => {
 	const { title } = post;
 

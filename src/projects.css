@@ -55,19 +55,7 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 20vh;
-	width: 325px;
-}
-
-.project-image.one {
-	background-image: url(/linealert.webp);
-}
-
-.project-image.two {
-	background-image: url(/streetsmart.webp);
-}
-
-.project-image.three {
-	background-image: url(/way_of_the_blade.webp);
+	width: 321px;
 }
 
 .proj-ss {
@@ -75,23 +63,15 @@
 }
 
 .proj-title {
-	margin: 1.5rem auto;
+	width: 100%;
 	font-weight: 600;
 	font-size: 20px;
-}
-
-.proj-description {
-	padding: 20px;
-	line-height: normal;
 }
 
 .proj-buttons {
 	display: flex;
 	gap: 1rem;
 	justify-content: center;
-	margin-top: auto;
-	margin-bottom: 2rem;
-	height: 50px;
 }
 
 .pjbut {

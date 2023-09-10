@@ -1,4 +1,4 @@
-# What's New in Python 3.12
+# What's New in [Python 3.12](https://docs.python.org/3.12/whatsnew/3.12.html)
 
 Python 3.12 is on the horizon, bringing with it a host of small yet significant updates. Let's take a closer look at some of the standout features and changes coming!
 

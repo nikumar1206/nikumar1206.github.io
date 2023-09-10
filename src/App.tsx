@@ -1,5 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { Route, Switch } from "wouter";
+import { Route, Router, Switch } from "wouter";
+import {
+	BaseLocationHook,
+	navigate,
+	useLocationProperty,
+} from "wouter/use-location";
 import Footer from "./components/footer";
 import Nav from "./components/nav";
 import Post from "./components/post";
@@ -11,6 +16,17 @@ import { allPosts } from "./shared/posts";
 function App() {
 	const [theme, setTheme] = useState(useContext(ThemeContext).theme);
 	const [markdownContent, setMarkdownContent] = useState("");
+
+	const hashLocation = () => window.location.hash.replace(/^#/, "") || "/";
+
+	const hashNavigate = (to: string) => {
+		navigate("#" + to);
+	};
+
+	const useHashLocation = () => {
+		const location = useLocationProperty(hashLocation);
+		return [location, hashNavigate];
+	};
 
 	useEffect(() => {
 		window.localStorage.setItem("theme", theme);
@@ -25,7 +41,6 @@ function App() {
 
 	const fetchMarkdownFile = async (id: string) => {
 		// ! this is being fetched twice! likely due to storing the fetch result in state causing a re-render and then invoking the same call again.
-		console.count("fetch markdown file called");
 		try {
 			const res = await fetch(`/post${id}.md`);
 			setMarkdownContent(await res.text());
@@ -36,38 +51,40 @@ function App() {
 
 	return (
 		<ThemeContext.Provider value={{ theme, setTheme }}>
-			<div
-				className={`${
-					theme === "dark"
-						? "bg-[#202023] text-[#f0f0f0]"
-						: "bg-[#f1e7db] text-[#202023]"
-				} h-screen w-screen`}
-			>
-				<Nav />
-				<Switch>
-					<Route path="/" component={Splash} />
-					<Route path="/projects" component={Projects} />
-					<Route path="/posts" component={Posts} />
-					<Route path="/post/:id">
-						{(params) => {
-							fetchMarkdownFile(params.id).catch((err) => {
-								console.log(err);
-							});
-							return (
-								<Post
-									id={params.id}
-									content={markdownContent}
-									post={
-										allPosts.find((post) => String(post.id) === params.id) ??
-										null
-									}
-								/>
-							);
-						}}
-					</Route>
-				</Switch>
-				<Footer />
-			</div>
+			<Router hook={useHashLocation as BaseLocationHook}>
+				<div
+					className={`${
+						theme === "dark"
+							? "bg-[#202023] text-[#f0f0f0]"
+							: "bg-[#f1e7db] text-[#202023]"
+					} h-screen w-screen`}
+				>
+					<Nav />
+					<Switch>
+						<Route path="/" component={Splash} />
+						<Route path="/projects" component={Projects} />
+						<Route path="/posts" component={Posts} />
+						<Route path="/post/:id">
+							{(params) => {
+								fetchMarkdownFile(params.id).catch((err) => {
+									console.log(err);
+								});
+								return (
+									<Post
+										id={params.id}
+										content={markdownContent}
+										post={
+											allPosts.find((post) => String(post.id) === params.id) ??
+											null
+										}
+									/>
+								);
+							}}
+						</Route>
+					</Switch>
+					<Footer />
+				</div>
+			</Router>
 		</ThemeContext.Provider>
 	);
 }

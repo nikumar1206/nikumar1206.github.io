@@ -18,6 +18,8 @@
 	--mteal: #5cb1af;
 	--dteal: #319795;
 	--blue: #1064a4;
+	--badge-bg: #c6f6d5;
+	--badge-color: #22543d;
 	--gradient-colors: rgb(137, 137, 244) 0%, rgb(165, 124, 231) 13%,
 		rgb(208, 135, 253) 24%, rgb(208, 150, 253) 34%, hsl(320deg 100% 72%) 43%,
 		hsl(340deg 100% 78%) 52%, hsl(0deg 95% 85%) 60%, hsl(335deg 84% 84%) 68%,
@@ -213,7 +215,7 @@
 	}
 
 	.link {
-		@apply px-2 py-1 transition-colors ease-in-out duration-300 text-[1.1rem] hover:underline hover:transition-all;
+		@apply px-2 py-[.40rem] transition-colors ease-in-out duration-300 text-[1.1rem] hover:underline hover:transition-all;
 	}
 	.headers {
 		@apply font-semibold leading-[1.33rem] underline underline-offset-4 decoration-[#525252] decoration-[4px] pb-2 text-xl;

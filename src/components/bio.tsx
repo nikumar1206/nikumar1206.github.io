@@ -5,9 +5,16 @@ const Bio = () => {
 		<section className="mx-auto mt-[3rem] flex flex-col gap-y-4">
 			<span className="">
 				I&apos;m a software engineer at the Machine Learning Center of
-				Excellence (MLCoE) at
-				<span className="text-[var(--blue)] inline"> JPMorgan Chase</span>.
-				Passionate about cloud computing, machine learning, and building
+				Excellence (MLCoE) at{" "}
+				<a
+					className="text-[var(--blue)] inline hover:underline"
+					href="https://www.jpmorgan.com/technology/applied-ai-and-ml/machine-learning"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					JPMorgan Chase
+				</a>
+				. Passionate about cloud computing, machine learning, and building
 				performant backends. In my free time, I enjoy playing tennis,
 				weightlifting, and spending time with my family.
 			</span>

@@ -61,7 +61,7 @@ const Nav = () => {
 									className={`link flex items-center gap-x-1`}
 								>
 									<FaGithub />
-									<span>Github</span>
+									<span>Source Code</span>
 								</a>
 							</li>
 						</ul>
