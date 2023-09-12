@@ -10,6 +10,15 @@ export interface PostData {
 
 export const allPosts: PostData[] = [
 	{
+		id: 3,
+		title: "Migrating JS Apps to Bun: Installement 1",
+		date: "2023-09-11",
+		tags: ["bun", "javascript", "migrating", "typescript", "vscode", "react"],
+		description: "A guide to migrating your JavaScript apps to Bun (Part 1)",
+		link: "/post/3",
+	},
+
+	{
 		id: 2,
 		title: "What's new in Python 3.12",
 		date: "2023-08-06",

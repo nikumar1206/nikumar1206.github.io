@@ -22,14 +22,19 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 
 	return (
 		<div className="codeblock relative w-full font-sans shadow-lg">
-			<div className="flex w-full items-center justify-between px-6 py-1 pr-4 text-zinc-50 bg-zinc-900">
-				<div className="flex flex-row gap-x-3">
+			<div className="flex w-full items-center justify-between px-6 pr-4 text-zinc-50 bg-inherit">
+				<div className="flex flex-row gap-x-3 bg-[#f3f3f3] px-3 rounded-b-md">
 					<img
 						src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${language}/${language}-original.svg`}
-						width={25}
+						width={20}
 						className="my-0 p-0"
+						onError={(e) => {
+							(e.target as HTMLImageElement).src = "/file.svg";
+						}}
 					/>
-					{/* <span className="text-lg font-light lowercase">{language}</span> */}
+					<span className="lowercase text-black flex align-middle font-light">
+						{language}
+					</span>
 				</div>
 				<button
 					onClick={() => void copyToClipboard()}
