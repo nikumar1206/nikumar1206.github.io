@@ -9,7 +9,12 @@ module.exports = {
 		"plugin:react/jsx-runtime",
 		"plugin:react/recommended",
 	],
-	ignorePatterns: ["dist", ".eslintrc.cjs", "tailwind.config.js"],
+	ignorePatterns: [
+		"dist",
+		".eslintrc.cjs",
+		"tailwind.config.js",
+		"postcss.config.js",
+	],
 	parser: "@typescript-eslint/parser",
 	parserOptions: {
 		ecmaVersion: "latest",
