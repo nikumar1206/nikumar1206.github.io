@@ -17,8 +17,8 @@ const Post = ({ content, post }: PostParams) => {
 	return (
 		<div
 			className={`max-w-[68rem] mx-auto p-6 ${
-				isDark ? "" : "bg-white"
-			} rounded-lg shadow-md mt-10 font-posts`}
+				isDark ? "" : ""
+			} mt-10 font-posts`}
 		>
 			<span className="float-right">{post?.date}</span>
 			<ReactMarkdown

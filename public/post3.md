@@ -1,6 +1,6 @@
 # Migrating JS Apps to Bun: A Series
 
-[Bun 1.0](https://bun.sh/) has finally arrived! Bun is a fast, all-in-one toolkit for running, building, and testing JS/TS applications. Although it has only been available for two days, and is still yet to be battle-tested, what better way to test a new JS framework than deploying it in production!
+[Bun 1.0](https://bun.sh/) has finally arrived! Bun is a fast, all-in-one toolkit for running, building, and testing JS/TS applications. It has generated a lot of excitment in the JavaScript world and although it has only been available for two days, what better way to test a new JS framework than by deploying it in production!
 
 This article will guide you through deploying an existing Vite app to GitHub Pages using Bun.js. This is great for migrating your personal websites over to Bun, and gaining some experience with the new technology!
 
@@ -15,7 +15,7 @@ rm -rf node_modules/
 bun install
 ```
 
-If everything went well, you should now have a `bun.lockb` and a resurrected `node_modules` directory in your root folder. Note, we can also update our local npm run dev command to use bun instead with `"dev": "bunx --bun vite"`, but I've found this to perform much more slowly than simply using the default, so we will keep it that way.
+If everything went well, you should now have a `bun.lockb` and a resurrected `node_modules` directory in your root folder. Note, we can also update our local npm run dev command to use bun instead with `"dev": "bunx --bun vite"`, but I've found this to perform much more slowly than simply using the default.
 
 ### Setup Github Actions
 
