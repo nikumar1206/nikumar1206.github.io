@@ -1,3 +1,4 @@
+import { AnimatePresence } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
 import { Route, Router, Switch } from "wouter";
 import {
@@ -60,28 +61,39 @@ function App() {
 					} h-screen w-screen`}
 				>
 					<Nav />
-					<Switch>
-						<Route path="/" component={Splash} />
-						<Route path="/projects" component={Projects} />
-						<Route path="/posts" component={Posts} />
-						<Route path="/post/:id">
-							{(params) => {
-								fetchMarkdownFile(params.id).catch((err) => {
-									console.log(err);
-								});
-								return (
-									<Post
-										id={params.id}
-										content={markdownContent}
-										post={
-											allPosts.find((post) => String(post.id) === params.id) ??
-											null
-										}
-									/>
-								);
-							}}
-						</Route>
-					</Switch>
+					<AnimatePresence
+						mode="wait"
+						initial={true}
+						onExitComplete={() => {
+							if (typeof window !== "undefined") {
+								window.scrollTo({ top: 0 });
+							}
+						}}
+					>
+						<Switch>
+							<Route path="/" component={Splash} />
+							<Route path="/projects" component={Projects} />
+							<Route path="/posts" component={Posts} />
+							<Route path="/post/:id">
+								{(params) => {
+									fetchMarkdownFile(params.id).catch((err) => {
+										console.log(err);
+									});
+									return (
+										<Post
+											id={params.id}
+											content={markdownContent}
+											post={
+												allPosts.find(
+													(post) => String(post.id) === params.id
+												) ?? null
+											}
+										/>
+									);
+								}}
+							</Route>
+						</Switch>
+					</AnimatePresence>
 					<Footer />
 				</div>
 			</Router>

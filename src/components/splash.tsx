@@ -1,13 +1,32 @@
+import { Variants, motion } from "framer-motion";
 import { useTheme } from "../hooks/themeHook";
 import Bio from "./bio";
 import Typewriter from "./typewriter";
+
+const routeVariants = {
+	initial: {
+		y: "2vh",
+		opacity: 0,
+	},
+	final: {
+		y: "0vh",
+		opacity: 1,
+		transition: {
+			type: "spring",
+			mass: 0.4,
+		},
+	},
+} as Variants;
 
 const Splash = () => {
 	const { theme } = useTheme();
 	const isDark = theme === "dark";
 
 	return (
-		<section
+		<motion.section
+			variants={routeVariants}
+			initial="initial"
+			animate="final"
 			id="splash-container"
 			className={`flex flex-col content-center items-center mx-auto space-y-5 mt-4 max-h-[calc(100vh-9rem)] ${
 				isDark ? "text-[#F0F0F0]" : "text-black"
@@ -22,7 +41,7 @@ const Splash = () => {
 				<Typewriter />
 				<Bio />
 			</div>
-		</section>
+		</motion.section>
 	);
 };
 export default Splash;

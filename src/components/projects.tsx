@@ -1,9 +1,31 @@
+import { Variants, motion } from "framer-motion";
 import { allProjects } from "../shared/projects";
 import Project from "./project";
 
+const routeVariants = {
+	initial: {
+		y: "2vh",
+		opacity: 0,
+	},
+	final: {
+		y: "0vh",
+		opacity: 1,
+		transition: {
+			type: "spring",
+			mass: 0.4,
+		},
+	},
+} as Variants;
+
 function Projects() {
 	return (
-		<section id="projects" className="projects-section">
+		<motion.section
+			id="projects"
+			className="projects-section"
+			variants={routeVariants}
+			initial="initial"
+			animate="final"
+		>
 			<div className="projects-content mt-20">
 				<div className="grid md:grid-cols-2 grid-cols-1 gap-x-5 gap-y-5 text-black">
 					{allProjects.map((project, i) => {
@@ -11,7 +33,7 @@ function Projects() {
 					})}
 				</div>
 			</div>
-		</section>
+		</motion.section>
 	);
 }
 export default Projects;

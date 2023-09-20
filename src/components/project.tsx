@@ -20,13 +20,15 @@ const Project = ({ project }: { project: ProjectData }) => {
 					backVisible ? "my-rotate-y-180" : ""
 				} w-[325px] h-full duration-1000`}
 			>
-				<div className="absolute backface-hidden w-[325px] h-full project flex flex-col">
+				<div className="absolute backface-hidden w-[325px] h-full project flex flex-col will-change-scroll">
 					<img
 						src={
 							isDark
 								? project.imageUrl
 								: project.darkimageUrl ?? project.imageUrl
 						}
+						loading="lazy"
+						width={325}
 					/>
 					<h3 className="proj-title my-3">{project.title}</h3>
 					<p className="proj-description px-1">{project.description}</p>
