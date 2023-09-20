@@ -1,4 +1,4 @@
-# Migrating JS Apps to Bun: A Series
+# Migrating JS Apps to Bun: Part 1
 
 [Bun 1.0](https://bun.sh/) has finally arrived! Bun is a fast, all-in-one toolkit for running, building, and testing JS/TS applications. It has generated a lot of excitment in the JavaScript world and although it has only been available for two days, what better way to test a new JS framework than by deploying it in production!
 
