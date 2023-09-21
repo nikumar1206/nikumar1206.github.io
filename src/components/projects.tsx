@@ -1,4 +1,5 @@
 import { Variants, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { allProjects } from "../shared/projects";
 import Project from "./project";
 
@@ -18,6 +19,26 @@ const routeVariants = {
 } as Variants;
 
 function Projects() {
+	const [loaded, setLoaded] = useState(false);
+
+	useEffect(() => {
+		function onPageLoad() {
+			setLoaded(true);
+		}
+		if (document.readyState === "complete") {
+			onPageLoad();
+			return;
+		}
+
+		window.addEventListener("load", onPageLoad);
+		return () => {
+			window.removeEventListener("load", onPageLoad);
+		};
+	}, []);
+	if (!loaded) {
+		return null;
+	}
+
 	return (
 		<motion.section
 			id="projects"
