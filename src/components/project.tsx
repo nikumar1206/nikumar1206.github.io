@@ -12,7 +12,12 @@ const Project = ({ project }: { project: ProjectData }) => {
 	const flipCard = () => {
 		setBackVisible(!backVisible);
 	};
-
+	function backgroundImage() {
+		if (!isDark) {
+			return project.darkimageUrl ?? project.imageUrl;
+		}
+		return project.imageUrl;
+	}
 	return (
 		<article className="revealz w-[325px] h-[420px] bg-transparent group perspective">
 			<div
@@ -20,16 +25,13 @@ const Project = ({ project }: { project: ProjectData }) => {
 					backVisible ? "my-rotate-y-180" : ""
 				} w-[325px] h-full duration-1000`}
 			>
-				<div className="absolute backface-hidden w-[325px] h-full project flex flex-col will-change-scroll">
-					<img
-						src={
-							isDark
-								? project.imageUrl
-								: project.darkimageUrl ?? project.imageUrl
-						}
-						loading="lazy"
-						width={325}
-					/>
+				<div
+					className={`absolute backface-hidden w-[325px] h-full project flex flex-col will-change-transform`}
+				>
+					<div
+						style={{ backgroundImage: `url(${backgroundImage()})` }}
+						className={`${backgroundImage()} w-[325px] h-[175px] bg-cover`}
+					></div>
 					<h3 className="proj-title my-3">{project.title}</h3>
 					<p className="proj-description px-1">{project.description}</p>
 					<div className="proj-buttons mt-[10%]">
