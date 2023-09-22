@@ -42,17 +42,15 @@ function Projects() {
 	return (
 		<motion.section
 			id="projects"
-			className="projects-section"
+			className="md:w-[60%] w-[80%] mx-auto mt-16 flex flex-col gap-y-3"
 			variants={routeVariants}
 			initial="initial"
 			animate="final"
 		>
-			<div className="projects-content mt-20">
-				<div className="grid md:grid-cols-2 grid-cols-1 gap-x-5 gap-y-5 text-black">
-					{allProjects.map((project, i) => {
-						return <Project project={project} key={i} />;
-					})}
-				</div>
+			<div className="grid md:grid-cols-2 grid-cols-1 gap-x-5 gap-y-5 text-black">
+				{allProjects.map((project, i) => {
+					return <Project project={project} key={i} />;
+				})}
 			</div>
 		</motion.section>
 	);

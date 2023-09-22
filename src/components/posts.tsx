@@ -24,7 +24,7 @@ const Posts = () => {
 			variants={routeVariants}
 			initial="initial"
 			animate="final"
-			className="md:w-[60%] w-[80%] mx-auto mt-20 flex flex-col gap-y-3"
+			className="md:w-[60%] w-[80%] mx-auto mt-16 flex flex-col gap-y-3"
 		>
 			{allPosts.map((post) => {
 				return <Postcard post={post} key={post.date} />;
