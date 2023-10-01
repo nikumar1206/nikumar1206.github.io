@@ -22,9 +22,11 @@ const Project = ({ project }: { project: ProjectData }) => {
 				</h3>
 				<div
 					style={{ backgroundImage: `url(${backgroundImage()})` }}
-					className={`${backgroundImage()} w-[22vw] h-[22vh] bg-cover`}
+					className={`${backgroundImage()} w-[85%] lg:w-[20vw] h-[14vh] lg:h-[20vh] bg-cover mx-auto object-cover`}
 				></div>
-				<p className="text-center w-[22vw] py-2">{project.description}</p>
+				<p className="text-center w-[85%] lg:w-[20vw]  mx-auto py-2">
+					{project.description}
+				</p>
 				<div className="flex flex-col gap-y-2 justify-center text-center h-full">
 					{project.badges.map((badge, i) => (
 						<Badge {...badge} key={i} />
