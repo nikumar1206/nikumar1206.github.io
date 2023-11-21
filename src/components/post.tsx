@@ -16,7 +16,7 @@ const Post = ({ content, post }: PostParams) => {
 
 	return (
 		<div
-			className={`max-w-[68rem] mx-auto p-6 ${
+			className={`max-w-[64rem] mx-auto p-6 ${
 				isDark ? "" : ""
 			} mt-10 font-posts`}
 		>
@@ -28,12 +28,16 @@ const Post = ({ content, post }: PostParams) => {
 				components={{
 					img({ ...props }) {
 						return (
-							<img
-								{...props}
-								className="m-0 inline-block ml-1"
-								width={15}
-								height={15}
-							/>
+							<div className="flex mx-auto flex-col">
+								<img
+									{...props}
+									className="m-0 mx-auto w-[45%] h-[25%] rounded-md"
+								/>
+								<span className="text-center">
+									{/* eslint-disable-next-line */}
+									{props.alt!}
+								</span>
+							</div>
 						);
 					},
 					a({ ...props }) {

@@ -22,7 +22,11 @@ And the best part? It’s completely customizable via a .eslintrc file. More inf
 
 Take this line of code:
 
-`for(const item of object) {}`
+```js
+for(const item of object) {
+  // cool stuff here!
+}
+```
 
 A simple loop meant to iterate over the items present in an object. Instead of writing that entire line out what if we could just write “fof” ( for … of loop ) and it would give us the same line of code? Well that’s the magic behind code snippets and there are tons more where that came from!
 

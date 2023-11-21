@@ -22,7 +22,7 @@ const Project = ({ project }: { project: ProjectData }) => {
 				</h3>
 				<div
 					style={{ backgroundImage: `url(${backgroundImage()})` }}
-					className={`${backgroundImage()} w-[85%] lg:w-[20vw] h-[14vh] lg:h-[20vh] bg-cover mx-auto object-cover`}
+					className={`${backgroundImage()} w-[85%] lg:w-[20vw] h-[14vh] lg:h-[20vh] bg-cover mx-auto object-cover rounded-md`}
 				></div>
 				<p className="text-center w-[85%] lg:w-[20vw]  mx-auto py-2">
 					{project.description}

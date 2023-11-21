@@ -72,9 +72,15 @@ The first step in a series aimed at removing the GIL (Global Interpreter Lock) f
 ### F-string Enhancements
 
 - You can now use the same quotes inside f-strings
-  - `f"hello world {",".join(list)}"`
+  - 
+  ```python
+  foo = f"hello world {",".join(list)}"
+  ```
 - Nesting f-strings is now possible.
-  - `f"{f'{"Hello world!"}'}"`
+  - 
+  ```python
+  foo = f"{f'{"Hello world!"}'}"
+  ```
 
 ### Faster Comprehension
 

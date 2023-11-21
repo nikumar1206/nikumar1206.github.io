@@ -21,9 +21,9 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 	};
 
 	return (
-		<div className="codeblock relative w-full font-sans shadow-lg">
-			<div className="flex w-full items-center justify-between px-6 pr-4 text-zinc-50 bg-inherit">
-				<div className="flex flex-row gap-x-3 bg-[#f3f3f3] px-3 rounded-b-md">
+		<div className="codeblock relative font-sans shadow-lg w-full">
+			<div className="flex w-full items-center justify-between pr-4 text-zinc-50 bg-inherit">
+				<div className="flex flex-row gap-x-3 bg-[#f3f3f3] px-3 rounded-br-md">
 					<img
 						src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${language}/${language}-original.svg`}
 						width={20}
@@ -76,7 +76,7 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 			<SyntaxHighlighter
 				language={language}
 				style={coldarkDark}
-				PreTag="div"
+				// PreTag="div"
 				wrapLongLines
 				wrapLines
 				customStyle={{

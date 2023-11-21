@@ -10,13 +10,21 @@ export interface PostData {
 
 export const allPosts: PostData[] = [
 	{
-		id: 3,
-		title: "Migrating JS Apps to Bun: Part 1",
-		date: "2023-09-11",
-		tags: ["bun", "javascript", "migrating", "typescript", "vscode", "react"],
-		description: "A guide to migrating your JavaScript apps to Bun (Part 1)",
-		link: "/post/3",
+		id: 4,
+		title: "The Hidden Intricacies of 'Hello World!' in Python",
+		date: "2023-11-18",
+		tags: ["python", "3.12", "ast", "bytecode", "interpretor", "react"],
+		description: "Writing `Hello World` may not be as simple as you think!",
+		link: "/post/4",
 	},
+	// {
+	// 	id: 3,
+	// 	title: "Migrating JS Apps to Bun: Part 1",
+	// 	date: "2023-09-11",
+	// 	tags: ["bun", "javascript", "migrating", "typescript", "vscode", "react"],
+	// 	description: "A guide to migrating your JavaScript apps to Bun (Part 1)",
+	// 	link: "/post/3",
+	// },
 
 	{
 		id: 2,
