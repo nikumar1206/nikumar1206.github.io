@@ -1,12 +1,11 @@
 # The Hidden Intricacies of 'Hello World'
 
-The "Hello World!" program is the quintessential starting point for many developers. It's likely the first program a developer writes and also likely the first program they first run when discovering a new language.
-Python, a language known for its readability, has arguably the most straightforward implementation:
+The "Hello World!" program is the quintessential starting point for many developers. Python, a language known for its readability, has arguably the most straightforward implementation:
 
 ```python
 print("Hello World")
 ```
-However, beneath this simple one-liner are hidden layers of complexities and processes that we will try to peel away like an onion. Welcome to Python: under the hood.
+However, beneath this simple one-liner are hidden layers of complexities and processes. Welcome to Python under the hood.
 
 ## Some Basics
 
@@ -22,10 +21,10 @@ To ensure we can follow along, let's assume we have the following:
     code = "print('Hello World')"
     ```
   - Placing our codeblock inside of a string will make it easier to pass it into analytic functions we will use later down the line.
-With all that out of the way, let's begin!
 
 ![Source Code -> Python Interpreter -> Machine Code -> Execution](/py_interpreter.png)
 
+The image above provides a high-level overview of how Python code is executed. Our source code is passed into the Python interpreter to be compiled into an intermediate representation called Python bytecode. This bytecode is then executed
 ## The Compilation Phase
 The source file must first go through a series of steps dictacted by the Python Interpreter, summed in the image above.
 

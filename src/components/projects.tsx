@@ -26,7 +26,7 @@ function Projects() {
 			initial="initial"
 			animate="final"
 		>
-			<div className="grid md:grid-cols-2 grid-cols-1 gap-x-5 gap-y-5 text-black">
+			<div className="grid xl:grid-cols-2 grid-cols-1 gap-x-5 gap-y-5 text-black">
 				{allProjects.map((project, i) => {
 					return <Project project={project} key={i} />;
 				})}

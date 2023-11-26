@@ -1,4 +1,4 @@
-import NeuButton from "./button";
+import { Button } from "./ui/button";
 
 const Bio = () => {
 	return (
@@ -24,14 +24,14 @@ const Bio = () => {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<NeuButton text="Resume" />
+					<Button variant="default">Resume</Button>
 				</a>
 				<a
 					href="https://www.linkedin.com/in/nikhilk99/"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<NeuButton text="Contact Me" />
+					<Button>Contact Me</Button>
 				</a>
 			</div>
 		</section>

@@ -1,38 +1,42 @@
-import { useTheme } from "../hooks/themeHook";
+import { Button } from "@/components/ui/button";
+import {
+	Card,
+	CardDescription,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 import { ProjectData } from "../shared/projects";
-import Badge from "./badge";
-
 const Project = ({ project }: { project: ProjectData }) => {
-	const { theme } = useTheme();
-	const isDark = theme === "dark";
-
-	function backgroundImage() {
-		if (!isDark) {
-			return project.darkimageUrl ?? project.imageUrl;
-		}
-		return project.imageUrl;
-	}
 	return (
-		<section
-			className={` mx-auto ${isDark ? "text-[#f0f0f0]" : "text-[#202023]"}`}
-		>
-			<div>
-				<h3 className="text-center font-semibold text-lg my-1">
-					{project.title}
-				</h3>
-				<div
-					style={{ backgroundImage: `url(${backgroundImage()})` }}
-					className={`${backgroundImage()} w-[85%] lg:w-[20vw] h-[14vh] lg:h-[20vh] bg-cover mx-auto object-cover rounded-md`}
-				></div>
-				<p className="text-center w-[85%] lg:w-[20vw]  mx-auto py-2">
-					{project.description}
-				</p>
-				<div className="flex flex-col gap-y-2 justify-center text-center h-full">
-					{project.badges.map((badge, i) => (
-						<Badge {...badge} key={i} />
-					))}
-				</div>
-			</div>
+		<section className="mx-auto dark:text-[#f0f0f0] text-[#202023]">
+			<Card className="max-h-[30vh] min-h-[225px] min-w-[350px]">
+				<CardHeader>
+					<CardTitle>{project.title}</CardTitle>
+					<CardDescription className="min-h-[100px] max-h-[12vh]">
+						{project.description}
+						<span className="mt-2 flex gap-x-3">
+							{project.tags.map((tag, i) => (
+								<span
+									className="bg-gray-200 rounded-full px-3 py-1 w-fit text-sm font-semibold text-gray-700 gap-y-5 max-w-[115px] max-h-[30px] truncate"
+									key={i}
+								>
+									{tag}
+								</span>
+							))}
+						</span>
+					</CardDescription>
+				</CardHeader>
+				{}
+				<CardFooter className="flex justify-end gap-x-2">
+					<a href={project.githubLink} target="_blank" rel="noreferrer">
+						<Button variant={"outline"}>Github</Button>
+					</a>
+					<a href={project.liveLink} target="_blank" rel="noreferrer">
+						<Button variant="default">Live</Button>
+					</a>
+				</CardFooter>
+			</Card>
 		</section>
 	);
 };

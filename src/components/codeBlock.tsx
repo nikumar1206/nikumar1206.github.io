@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 interface CodeBlockProps {
 	language: string;
@@ -75,8 +75,7 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 			</div>
 			<SyntaxHighlighter
 				language={language}
-				style={coldarkDark}
-				// PreTag="div"
+				style={nightOwl}
 				wrapLongLines
 				wrapLines
 				customStyle={{
@@ -84,18 +83,7 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 					width: "100%",
 					background: "transparent",
 					padding: "1rem",
-				}}
-				codeTagProps={{
-					className: "font-mono",
-					style: {
-						fontSize: "0.9rem",
-					},
-				}}
-				lineProps={{
-					style: {
-						fontSize: "0.9rem",
-						lineHeight: "1.25rem",
-					},
+					fontFamily: "monospace",
 				}}
 			>
 				{value}

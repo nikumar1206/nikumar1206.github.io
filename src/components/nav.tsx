@@ -36,7 +36,7 @@ const Nav = () => {
 									href="/projects"
 									className={`link ${
 										location === "/projects"
-											? "bg-[var(--teal)] text-black"
+											? "bg-[var(--teal)]  text-black"
 											: ""
 									}`}
 								>

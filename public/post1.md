@@ -22,7 +22,7 @@ And the best part? It’s completely customizable via a .eslintrc file. More inf
 
 Take this line of code:
 
-```js
+```javascript
 for(const item of object) {
   // cool stuff here!
 }

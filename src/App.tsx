@@ -16,7 +16,6 @@ import { ThemeContext } from "./context/themeContext";
 import { allPosts } from "./shared/posts";
 function App() {
 	const [theme, setTheme] = useState(useContext(ThemeContext).theme);
-	const [markdownContent, setMarkdownContent] = useState("");
 
 	const hashLocation = () => window.location.hash.replace(/^#/, "") || "/";
 
@@ -40,15 +39,22 @@ function App() {
 		}
 	}, [theme]);
 
-	const fetchMarkdownFile = async (id: string) => {
-		// ! this is being fetched twice! likely due to storing the fetch result in state causing a re-render and then invoking the same call again.
-		try {
-			const res = await fetch(`/post${id}.md`);
-			setMarkdownContent(await res.text());
-		} catch (error) {
-			console.log(error);
-		}
-	};
+	useEffect(() => {
+		Promise.allSettled(
+			allPosts.map(async (post) => {
+				console.log(post.id);
+				const file = await fetch(`/post${post.id}.md`);
+				const content = await file.text();
+				post.body = content;
+			})
+		)
+			.then(() => {
+				console.log("Fetched all posts.");
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 
 	return (
 		<ThemeContext.Provider value={{ theme, setTheme }}>
@@ -76,13 +82,9 @@ function App() {
 							<Route path="/posts" component={Posts} />
 							<Route path="/post/:id">
 								{(params) => {
-									fetchMarkdownFile(params.id).catch((err) => {
-										console.log(err);
-									});
 									return (
 										<Post
 											id={params.id}
-											content={markdownContent}
 											post={
 												allPosts.find(
 													(post) => String(post.id) === params.id

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { useTheme } from "../hooks/themeHook";
 import { PostData } from "../shared/posts";
@@ -5,14 +6,48 @@ import { CodeBlock } from "./codeBlock";
 
 interface PostParams {
 	readonly id?: string;
-	content: string;
 	post: PostData | null;
 }
 
-const Post = ({ content, post }: PostParams) => {
+const Post = ({ post }: PostParams) => {
 	const { theme } = useTheme();
 
 	const isDark = theme === "dark";
+	const [markdownContent, setMarkdownContent] = useState<string>(
+		post?.body ?? ""
+	);
+
+	useEffect(() => {
+		const fetchMarkdownFile = (id: number) => {
+			let markdownContent = "";
+			console.log("fetching markdown file");
+			fetch(`/post${id}.md`)
+				.then(async (res) => {
+					markdownContent = await res.text();
+					setMarkdownContent(markdownContent);
+				})
+				.catch((err) => {
+					console.log(err);
+					markdownContent = "An error occurred while fetching the post.";
+				});
+
+			return markdownContent;
+		};
+		if (post && !post.body) {
+			const markdownContent = fetchMarkdownFile(post.id);
+			setMarkdownContent(markdownContent);
+			console.log(markdownContent);
+		}
+	}, [post]);
+
+	if (!post) {
+		return (
+			<div className="max-w-[64rem] mx-auto p-6 mt-10 font-posts">
+				<h1 className="text-4xl font-bold">404</h1>
+				<p className="text-xl mt-4">Post not found.</p>
+			</div>
+		);
+	}
 
 	return (
 		<div
@@ -20,11 +55,9 @@ const Post = ({ content, post }: PostParams) => {
 				isDark ? "" : ""
 			} mt-10 font-posts`}
 		>
-			<span className="float-right">{post?.date}</span>
+			<span className="float-right">{post.date}</span>
 			<ReactMarkdown
-				className={`max-w-none prose-pre:p-0 prose-h2:mt-[1em] prose-h1:text-5xl ${
-					isDark ? "prose prose-invert prose-fuchsia" : "prose prose-fuschia"
-				}}`}
+				className="max-w-none prose-pre:p-0 prose-h2:mt-[1em] prose-h1:text-5xl prose prose-fuschia dark:prose-invert"
 				components={{
 					img({ ...props }) {
 						return (
@@ -87,7 +120,7 @@ const Post = ({ content, post }: PostParams) => {
 					},
 				}}
 			>
-				{content}
+				{markdownContent}
 			</ReactMarkdown>
 		</div>
 	);
