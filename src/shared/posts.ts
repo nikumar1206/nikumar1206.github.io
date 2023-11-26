@@ -13,7 +13,7 @@ export const allPosts: PostData[] = [
 		id: 4,
 		title: "The Hidden Intricacies of 'Hello World!' in Python",
 		date: "2023-11-18",
-		tags: ["python", "3.12", "ast", "bytecode", "interpretor", "react"],
+		tags: ["python", "3.12", "ast", "bytecode", "interpretor"],
 		description: "Writing `Hello World` may not be as simple as you think!",
 		link: "/post/4",
 	},

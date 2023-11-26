@@ -24,10 +24,10 @@ To ensure we can follow along, let's assume we have the following:
 
 ![Source Code -> Python Interpreter -> Machine Code -> Execution](/py_interpreter.png)
 
-The image above provides a high-level overview of how Python code is executed. Our source code is passed into the Python interpreter to be compiled into an intermediate representation called Python bytecode. This bytecode is then executed
+The image above provides a high-level overview of how Python code is executed. Our source code is passed into the Python interpreter to be compiled into an intermediate representation called Python bytecode. The Python virtual machine handles the execution of this Python bytecode.
+
 ## The Compilation Phase
 The source file must first go through a series of steps dictacted by the Python Interpreter, summed in the image above.
-
 
 ### Lexical Analysis and Tokenization
 The journey begins with the Python interpreter analyzing the source code through lexical analysis and tokenization. This step involves breaking down the code into a sequence of tokens, the smallest units in the Python language. We can see the tokens generated for our python code by importing the tokenize library and using the tokenize function as such:

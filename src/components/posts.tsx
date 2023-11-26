@@ -71,7 +71,7 @@ const Posts = () => {
 								>
 									<TableCell className="font-medium">{post.date}</TableCell>
 									<TableCell>{post.title}</TableCell>
-									<TableCell className="flex gap-x-1">
+									<TableCell className="flex gap-x-1 flex-wrap gap-y-1">
 										{post.tags.map((tag, i) => {
 											return (
 												<span
