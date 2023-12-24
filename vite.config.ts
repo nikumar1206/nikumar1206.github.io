@@ -25,10 +25,8 @@ export default defineConfig({
 				manualChunks: (id) => {
 					if (id.includes("react")) {
 						return "react";
-					} else if (id.includes("node_modules") && id.length % 2 === 0) {
-						return "vendor-1";
-					} else if (id.includes("node_modules") && id.length % 2 !== 0) {
-						return "vendor-2";
+					} else if (id.includes("node_modules")) {
+						return "vendor";
 					} else {
 						return "index";
 					}
