@@ -20,18 +20,5 @@ export default defineConfig({
 	build: {
 		outDir: "build",
 		emptyOutDir: true,
-		rollupOptions: {
-			output: {
-				manualChunks: (id) => {
-					if (id.includes("react")) {
-						return "react";
-					} else if (id.includes("node_modules")) {
-						return "vendor";
-					} else {
-						return "index";
-					}
-				},
-			},
-		},
 	},
 });
