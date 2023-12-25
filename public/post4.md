@@ -69,7 +69,7 @@ Understanding the different tokens present in the Python language is far beyond 
 ### Abstract Syntax Tree (AST) Generation
 
 Next, the interpreter generates an Abstract Syntax Tree (AST) from the tokens. The AST serves as a hierarchical representation of the syntactic structure of the source
-code. We can visualize this hierarchical representation by using the "ast" module in python.
+code. We can visualize this hierarchical representation by using the `ast` module in python.
 
 ```python
 import ast
@@ -93,9 +93,9 @@ Module(
 
 Let's break this AST down a bit:
 
-- Module is the top-level node, representing the entire Python script. This doesn't have to be `Module` and can be other things like `ClassDef`, depending on the structure of the Python code.
-- Body represents the content inside the module. In this case, the body is a single function call of `print` with the argument "Hello World!" and no kwargs (keywords) passed into it.
-- type_ignores represent comments in the Python code requesting any static type checkers (like mypy) to ignore specific lines/classes/functions from being type checked.
+- `Module` is the top-level node, representing the entire Python script. This doesn't have to be `Module` and can be other things like `ClassDef`, depending on the structure of the Python code.
+- `Body` represents the content inside the module. In this case, the body is a single function call of `print` with the argument "Hello World!" and no kwargs (keywords) passed into it.
+- `type_ignores` represent comments in the Python code requesting any static type checkers (like mypy) to ignore specific lines/classes/functions from being type checked.
 
 I'm oversimplifying tons of concepts here, and I haven't even gotten into things like control flow. If you are interested in AST's, I highly recommend taking a look at [Thomas Kluyver's](https://greentreesnakes.readthedocs.io/en/latest/) documentation.
 The idea of generating an AST is not specific to Python, or even specific for compilation steps. Higher level languages like JavaScript, Ruby, and Java generally implement ASTs for code analysis and transformation.
@@ -104,7 +104,7 @@ The idea of generating an AST is not specific to Python, or even specific for co
 
 The AST is then translated into bytecode, a lower-level, platform-independent representation of the code. This bytecode is what the Python Virtual Machine (PVM) executes. Now, we can actually see the creation of this
 bytecode when executing a Python module. If you've ever seen a **pycache** folder or a file ending with .pyc, that's what that is. The pyc files are used for faster loading of modules on subsequent imports, as well
-as speeding up the subsequent executions of the Python program. However, these files are not actually human readable. To attain the human-readable representation of the bytecode, we can leverage the dis module.
+as speeding up the subsequent executions of the Python program. However, these files are not actually human readable. To attain the human-readable representation of the bytecode, we can leverage the `dis` module.
 
 ```python
 import dis
@@ -115,7 +115,7 @@ dis.dis(code)
 
 This should output something that looks like this:
 
-```txt
+```bash
   0           0 RESUME                   0
 
   1           2 PUSH_NULL
@@ -125,19 +125,19 @@ This should output something that looks like this:
              16 RETURN_VALUE
 ```
 
-The code is starting to become a lot less readable (especially for someone new to computers and programming like me), but let's take a second to understand this output:
+The code is starting to become a lot less readable (especially for someone new to programming like me), but let's take a second to understand this output:
 
-- Each printed line represents a bytecode instruction, and the columns can be labeled as such: bytecode offset, opcodes, and arguments.
-- Bytecode offset (left-most column represented by 0 and 1) is the location of the specific bytecode instruction in the bytecode sequence. They will start with 0 and increment from there.
-- Opcode (middle column) is short for operation code. It is a specific operation or instruction that must be executed.
-- Arguments (right-most column) are the values passed into instruction.
+- Each printed line represents a bytecode instruction, and the columns can be labeled as such: `bytecode offset`, `opcodes`, and `arguments`.
+- `Bytecode offset` (left-most column represented by 0 and 1) is the location of the specific bytecode instruction in the bytecode sequence. They will start with 0 and increment from there.
+- `Opcode` (middle column) is short for operation code. It is a specific operation or instruction that must be executed.
+- `Arguments` (right-most column) are the values passed into instruction.
 
 Let's also spend some time understanding some of these instructions.
 
-- RESUME tells the Python VM to resume execution of the bytecode at this spot. This instruction is commonly seen at the top of bytecode instructions as well as in coroutines, so the Python VM can resume execution at the specified point.
-- PUSH_NULL is a new instruction (added in Python 3.11) that's used to push a C NULL to the bottom of the Python stack and its presence is necessary for many function calls. I would love for someone to explain why this instruction is necessary for function calls!
-- LOAD_NAME and LOAD_CONST both add a specified value to the stack, with LOAD_NAME being used for values like variables, functions, and classes and LOAD_CONST being used for strings, numbers, booleans, and None.
-- CALL calls the function at the top of the stack and RETURN_VALUE returns the top of the stack as the function value.
+- `RESUME` tells the Python VM to resume execution of the bytecode at this spot. This instruction is commonly seen at the top of bytecode instructions as well as in coroutines, so the Python VM can resume execution at the specified point.
+- `PUSH_NULL` is a new instruction (added in Python 3.11) that's used to push a C NULL to the bottom of the Python stack and its presence is necessary for many function calls. I would love for someone to explain why this instruction is necessary for function calls!
+- `LOAD_NAME` and `LOAD_CONST` both add a specified value to the stack, with LOAD_NAME being used for values like variables, functions, and classes and LOAD_CONST being used for strings, numbers, booleans, and None.
+- `CALL` calls the function at the top of the stack and `RETURN_VALUE` returns the top of the stack as the function value.
 
 ## Execution Phase
 
@@ -155,11 +155,11 @@ The interpreter dynamically allocates memory for objects at creation and uses a 
 
 During execution, Python interacts with the operating system for various tasks such as network calls, writing to standard out, and reading input from the user.
 
-In our case, the print() function in Python will undergo a process similar to this during the execution phase:
+In our case, the `print()` function in Python will undergo a process similar to this during the execution phase:
 
-1. print() function will write the necessary data to an internal buffer.
-2. The buffered data will then be written to a file descriptor associated with standard out using the write() system call.
-3. write() will interact with the terminal subsystem to display the data.
+1. `print()` function will write the necessary data to an internal buffer.
+2. The buffered data will then be written to a file descriptor associated with standard out using the `write()` system call.
+3. `write()` will interact with the terminal subsystem to display the data.
 
 Below is a diagram generated by ChatGPT to help illustrate this process:
 
