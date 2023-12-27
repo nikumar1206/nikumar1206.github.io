@@ -31,7 +31,7 @@ The image above provides a high-level overview of how Python code is executed. O
 
 ## The Compilation Phase
 
-The source file must first go through a series of steps dictacted by the Python Interpreter, summed in the image above.
+The source file must first go through a series of steps dictated by the Python Interpreter, summed in the image above.
 
 ### Lexical Analysis and Tokenization
 
@@ -56,7 +56,7 @@ TokenInfo(type=4 (NEWLINE), string='', start=(1, 21), end=(1, 22), line="print('
 TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
 ```
 
-Let's break this output down a litte:
+Let's break this output down a little:
 
 - Type identifies the category the tokens belong to. For example, the NAME token can be used to represent identifiers of variables, functions, and classes. In this case,
   they represent the global function `print`.
