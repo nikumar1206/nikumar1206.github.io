@@ -1,6 +1,6 @@
 # Top 5 VSCode Extensions for JS Devs
 
-If you’re a JS developer in 2023, chances are you’re using VS Code and for good reason. There just isn’t an IDE that is as jam-packed with features, while still feeling light. Here are the top 5 VS Code extensions that can help you become a more productive JS developer.
+If you’re a JS developer in 2024, chances are you’re using VS Code and for good reason. There just isn’t an IDE that is as jam-packed with features, while still feeling light. Here are the top 5 VS Code extensions that can help you become a more productive JS developer.
 
 ### 1. [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
 

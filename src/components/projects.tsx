@@ -21,7 +21,7 @@ function Projects() {
 	return (
 		<motion.section
 			id="projects"
-			className="md:w-[60%] w-[80%] mx-auto mt-16 flex flex-col gap-y-3"
+			className="md:w-[60%] w-[80%] mx-auto mt-16 flex flex-col gap-y-3 min-h-[calc(100vh-12rem)]"
 			variants={routeVariants}
 			initial="initial"
 			animate="final"

@@ -1,4 +1,4 @@
-import { Button } from "./ui/button";
+import NeuFollowButton from "./button_neu";
 
 const Bio = () => {
 	return (
@@ -18,20 +18,20 @@ const Bio = () => {
 				performant backends. In my free time, I enjoy playing tennis,
 				weightlifting, and spending time with my family.
 			</span>
-			<div className="flex flex-col lg:flex-row sm:flex-col gap-y-3 justify-end gap-x-3 w-[90%]">
+			<div className="flex flex-col lg:flex-row sm:flex-col gap-y-3 justify-end gap-x-10 w-[90%]">
 				<a
 					href="https://drive.google.com/file/d/1ktc9Q_f0z6emR8xdkJbzD7Bg8msQBUSd/view?usp=sharing"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<Button variant="default">Resume</Button>
+					<NeuFollowButton title="Resume" />
 				</a>
 				<a
 					href="https://www.linkedin.com/in/nikhilk99/"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<Button>Contact Me</Button>
+					<NeuFollowButton title="Contact Me!" />
 				</a>
 			</div>
 		</section>

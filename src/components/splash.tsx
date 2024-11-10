@@ -28,7 +28,7 @@ const Splash = () => {
 			initial="initial"
 			animate="final"
 			id="splash-container"
-			className={`flex flex-col content-center items-center mx-auto space-y-5 mt-4 max-h-[calc(100vh-9rem)] ${
+			className={`flex flex-col content-center items-center mx-auto space-y-5 mt-4 min-h-[calc(100vh-12rem)] ${
 				isDark ? "text-[#F0F0F0]" : "text-black"
 			}`}
 		>
