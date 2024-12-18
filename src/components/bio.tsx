@@ -1,4 +1,4 @@
-import NeuFollowButton from "./button_neu";
+import NeuButton from "./button";
 
 const Bio = () => {
 	return (
@@ -24,14 +24,14 @@ const Bio = () => {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<NeuFollowButton title="Resume" />
+					<NeuButton text="Resume" />
 				</a>
 				<a
 					href="https://www.linkedin.com/in/nikhilk99/"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<NeuFollowButton title="Contact Me!" />
+					<NeuButton text="Contact Me!" />
 				</a>
 			</div>
 		</section>
