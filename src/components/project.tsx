@@ -13,7 +13,7 @@ const Project = ({ project }: { project: ProjectData }) => {
 			<Card className="max-h-[30vh] min-h-[225px] min-w-[350px]">
 				<CardHeader>
 					<CardTitle>{project.title}</CardTitle>
-					<CardDescription className="min-h-[100px] max-h-[12vh]">
+					<CardDescription className="min-h-[80px] max-h-[12vh]">
 						{project.description}
 						<span className="mt-2 flex gap-x-3">
 							{project.tags.map((tag, i) => (
