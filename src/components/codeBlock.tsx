@@ -1,14 +1,24 @@
 import { useTheme } from "@/hooks/themeHook";
 import { memo, useState } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
+import { LightAsync as SyntaxHighlighter } from "react-syntax-highlighter";
+import bash from "react-syntax-highlighter/dist/esm/languages/hljs/bash";
+import js from "react-syntax-highlighter/dist/esm/languages/hljs/javascript";
+import python from "react-syntax-highlighter/dist/esm/languages/hljs/python";
+import yaml from "react-syntax-highlighter/dist/esm/languages/hljs/yaml";
 import {
 	a11yDark as darkTheme,
 	xcode as lightTheme,
 } from "react-syntax-highlighter/dist/esm/styles/hljs";
+
 interface CodeBlockProps {
 	language: string;
 	readonly value: string;
 }
+
+SyntaxHighlighter.registerLanguage("python", python);
+SyntaxHighlighter.registerLanguage("bash", bash);
+SyntaxHighlighter.registerLanguage("javascript", js);
+SyntaxHighlighter.registerLanguage("yaml", yaml);
 
 const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 	const [copySuccess, setCopySuccess] = useState(false);
