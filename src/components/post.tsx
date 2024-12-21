@@ -99,9 +99,9 @@ const Post = ({ post }: PostParams) => {
 							</span>
 						);
 					},
-					code({ inline, className, children, ...props }) {
+					code({ className, children, ...props }) {
 						const match = /language-(\w+)/.exec(className ?? "");
-						return !inline && match ? (
+						return match ? (
 							<CodeBlock
 								language={match[1] ? match[1] : ""}
 								value={String(children).replace(/\n$/, "")}
@@ -111,9 +111,11 @@ const Post = ({ post }: PostParams) => {
 							<code
 								{...props}
 								style={{ color: isDark ? "#ff63c3" : "#e60073" }}
-								className={className + "font-code text-sm"}
+								className={
+									"font-code text-sm bg-white rounded-md p-[.15rem] dark:border-[rgb(100,111,117,.2)] dark:bg-[#1a1a1a] dark:text-[#ff63c3] dark:p-[.15rem] dark:rounded-md"
+								}
 							>
-								{children}
+								{children?.toLocaleString().replace("`", "")}
 							</code>
 						);
 					},
