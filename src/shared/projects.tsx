@@ -207,7 +207,7 @@ export const allProjects: ProjectData[] = [
 		title: "Personal Website",
 		date: "2023-09-10",
 		description:
-			"My personal website, built with some of my favorite technologies and host to my blog. This website is always a work in progress.",
+			"My personal website, built with some technologies I am actively experimenting with and host to my blog. This website is always a work in progress.",
 		liveLink: "https://nikhil-kumar.tk/",
 		githubLink: "https://github.com/nikumar1206/nikumar1206.github.io",
 		imageUrl: "/portfolio.webp",

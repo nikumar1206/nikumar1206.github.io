@@ -32,7 +32,10 @@ const Posts = () => {
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value.toLowerCase();
 		const filteredPosts = allPosts.filter((post) => {
-			return post.tags.some((tag) => tag.toLowerCase().includes(value));
+			return (
+				post.tags.some((tag) => tag.toLowerCase().includes(value)) ||
+				post.title.toLowerCase().includes(value)
+			);
 		});
 		setFilteredPosts(filteredPosts);
 	};
@@ -46,7 +49,7 @@ const Posts = () => {
 		>
 			<Input
 				onChange={handleInputChange}
-				placeholder="Search by tag"
+				placeholder="Search by tags or title"
 				type="text"
 				className="border-black dark:border-white flex self-end w-[300px] transition-all duration-300 ease-in-out focus:ring-2 focus:ring-black dark:focus:ring-white focus:outline-none"
 			/>
@@ -64,10 +67,10 @@ const Posts = () => {
 				<TableBody>
 					{filteredPosts.map((post) => {
 						return (
-							<Link key={post.id} to={post.link} className="cursor-pointer">
+							<Link key={post.id} to={post.link}>
 								<TableRow
 									key={post.id}
-									className="border-b-[1px] border-black dark:border-white"
+									className="border-b-[1px] border-black dark:border-white cursor-pointer"
 								>
 									<TableCell className="">{post.date}</TableCell>
 									<TableCell className="font-normal text-[1rem]">

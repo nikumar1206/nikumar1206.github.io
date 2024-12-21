@@ -20,15 +20,25 @@ const Nav = () => {
 			>
 				<div className="flex flex-row justify-around items-center align-middle h-full">
 					<div className="flex lg:gap-x-20 md:gap-x-10 sm:gap-x-5">
-						<span className="font-semibold text-[1.35rem] flex justify-center">
+						{/* <span className="font-semibold text-[1.35rem] flex justify-center">
 							<Link href="/" className="flex items-center gap-x-[0.1rem]">
 								<span className="align-middle sm:inline hidden cursor-pointer">
 									Nikhil Kumar
 								</span>
 							</Link>
-						</span>
+						</span> */}
 
 						<ul className="list-none flex items-center gap-x-1">
+							<li>
+								<Link
+									href=""
+									className={`link ${
+										location === "/" ? "bg-[var(--teal)] text-black" : ""
+									}`}
+								>
+									Home
+								</Link>
+							</li>
 							<li>
 								<Link
 									href="/posts"
@@ -61,7 +71,7 @@ const Nav = () => {
 									className={`link flex items-center gap-x-1`}
 								>
 									<FaGithub />
-									<span>Source Code</span>
+									<code className="text-sm">source_code</code>
 								</a>
 							</li>
 						</ul>

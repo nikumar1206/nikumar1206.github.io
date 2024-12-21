@@ -9,8 +9,8 @@ import {
 import { ProjectData } from "../shared/projects";
 const Project = ({ project }: { project: ProjectData }) => {
 	return (
-		<section className="mx-auto dark:text-[#f0f0f0] text-[#202023]">
-			<Card className="max-h-[30vh] min-h-[225px] min-w-[350px]">
+		<section className="mx-auto dark:text-[#f0f0f0] text-[#202023] overflow-hidden">
+			<Card className=" min-w-[350px]">
 				<CardHeader>
 					<CardTitle>{project.title}</CardTitle>
 					<CardDescription className="min-h-[80px] max-h-[12vh]">
