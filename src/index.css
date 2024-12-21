@@ -164,15 +164,9 @@ code {
 			linear-gradient(#f2c, #f2c);
 	}
 
-	.link-underline:hover {
-		background-size: 100% 2px;
-		background-position: 0 100%;
-	}
-
 	.footer {
 		background: var(--light-bg);
 		color: #5f6c80;
-		/* border-top-color: #cbd5e0; */
 	}
 
 	.footer-dark {
@@ -186,7 +180,7 @@ code {
 	}
 
 	.link {
-		@apply px-1 py-2 transition-colors ease-in-out duration-300 text-[1.1rem] hover:transition-all rounded-sm;
+		@apply px-1 py-2 text-[1.1rem]  rounded-sm;
 	}
 	.headers {
 		@apply font-semibold leading-[1.33rem] underline underline-offset-4 decoration-[#525252] decoration-[4px] pb-2 text-xl;
@@ -284,4 +278,18 @@ code {
 		:where([class~="not-prose"], [class~="not-prose"] *)
 	)::before {
 	content: none;
+}
+
+.link-underline {
+	background-image: linear-gradient(transparent, transparent),
+		linear-gradient(var(--teal), var(--teal));
+	background-size: 0 2px;
+	background-position: 0 100%;
+	background-repeat: no-repeat;
+	transition: background-size 0.25s ease-in-out;
+}
+
+.link-underline-active {
+	background-size: 100% 2px;
+	background-position: 0 100%;
 }

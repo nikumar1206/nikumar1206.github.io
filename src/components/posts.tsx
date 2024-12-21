@@ -8,7 +8,7 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { allPosts } from "@/shared/posts";
-import { Variants, motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useState } from "react";
 import { Link } from "wouter";
 import { Input } from "./ui/input";

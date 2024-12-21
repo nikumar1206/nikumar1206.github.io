@@ -24,35 +24,31 @@ const Nav = () => {
 							<li>
 								<Link
 									href=""
-									className={`link ${
-										location === "/" ? "bg-[var(--teal)] text-black" : ""
+									className={`link link-underline font-code text-sm ${
+										location === "/" ? "link-underline-active" : ""
 									}`}
 								>
-									Home
+									/home
 								</Link>
 							</li>
 							<li>
 								<Link
 									href="/posts"
-									className={`link ${
-										location.includes("post")
-											? "bg-[var(--teal)] text-black"
-											: ""
+									className={`link link-underline font-code text-sm ${
+										location.includes("post") ? "link-underline-active" : ""
 									}`}
 								>
-									Posts
+									/posts
 								</Link>
 							</li>
 							<li>
 								<Link
 									href="/projects"
-									className={`link ${
-										location === "/projects"
-											? "bg-[var(--teal)]  text-black"
-											: ""
+									className={`link link-underline font-code text-sm ${
+										location === "/projects" ? "link-underline-active" : ""
 									}`}
 								>
-									Works
+									/projects
 								</Link>
 							</li>
 							<li>
