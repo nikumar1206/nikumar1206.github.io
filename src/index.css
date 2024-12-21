@@ -186,7 +186,7 @@ code {
 	}
 
 	.link {
-		@apply px-4 py-[.20rem] transition-colors ease-in-out duration-300 text-[1.1rem] hover:transition-all rounded-sm;
+		@apply px-1 py-2 transition-colors ease-in-out duration-300 text-[1.1rem] hover:transition-all rounded-sm;
 	}
 	.headers {
 		@apply font-semibold leading-[1.33rem] underline underline-offset-4 decoration-[#525252] decoration-[4px] pb-2 text-xl;

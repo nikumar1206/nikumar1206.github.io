@@ -1,5 +1,5 @@
 import { FaLinkedinIn } from "react-icons/fa";
-import { FiGithub, FiTwitter } from "react-icons/fi";
+import { FiGithub } from "react-icons/fi";
 import { ImNewspaper } from "react-icons/im";
 import { useTheme } from "../hooks/themeHook";
 const Footer = () => {
@@ -17,16 +17,6 @@ const Footer = () => {
 				<span className="hidden sm:inline">- All rights reserved.</span>
 			</div>
 			<div className="flex gap-x-4">
-				<div>
-					<a
-						href="https://twitter.com/nick_kumar_"
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label="Twitter"
-					>
-						<FiTwitter className="text-[1.4rem]" />
-					</a>
-				</div>
 				<a
 					href="https://github.com/nikumar1206"
 					target="_blank"

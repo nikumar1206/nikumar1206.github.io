@@ -1,7 +1,10 @@
+import { useTheme } from "@/hooks/themeHook";
 import { memo, useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
-
+import SyntaxHighlighter from "react-syntax-highlighter";
+import {
+	a11yDark as darkTheme,
+	xcode as lightTheme,
+} from "react-syntax-highlighter/dist/esm/styles/hljs";
 interface CodeBlockProps {
 	language: string;
 	readonly value: string;
@@ -9,8 +12,8 @@ interface CodeBlockProps {
 
 const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 	const [copySuccess, setCopySuccess] = useState(false);
-	// const { theme } = useTheme();
-	// const isDark = theme === "dark";
+	const { theme } = useTheme();
+	const isDark = theme === "dark";
 
 	const copyToClipboard = async () => {
 		await navigator.clipboard.writeText(value);
@@ -21,9 +24,9 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 	};
 
 	return (
-		<div className="codeblock relative font-sans shadow-lg w-full">
-			<div className="w-full text-zinc-50 bg-inherit">
-				<div className="flex justify-between bg-[#f3f3f3] w-full px-3 py-2 font-code">
+		<div className="font-sans shadow-lg w-full rounded-3xl">
+			<div className="w-full rounded-md">
+				<div className="flex justify-between bg-slate-100 w-full px-3 py-1 font-code items-center">
 					<div className="flex items-center gap-x-3">
 						<img
 							src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${language}/${language}-original.svg`}
@@ -33,13 +36,13 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 								(e.target as HTMLImageElement).src = "/file.svg";
 							}}
 						/>
-						<span className="lowercase text-black flex align-middle font-light text-base">
+						<span className="lowercase text-black flex align-middle font-light text-sm">
 							{language}
 						</span>
 					</div>
 					<button
 						onClick={() => void copyToClipboard()}
-						className="w-5 h-5 hover:text-[#ff3399] text-gray-500 transition-all duration-200 "
+						className="w-[0.85rem] h-[0.85rem] hover:text-[#ff3399] text-gray-500 transition-all duration-200"
 					>
 						{copySuccess ? (
 							<svg
@@ -48,7 +51,7 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 								viewBox="0 0 24 24"
 								strokeWidth={1.5}
 								stroke="currentColor"
-								className="w-5 h-5 text-[#ff3399]"
+								className="w-[0.85rem] h-[0.85rem] text-[#ff3399]"
 							>
 								<path
 									strokeLinecap="round"
@@ -63,7 +66,7 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 								viewBox="0 0 24 24"
 								strokeWidth={1.5}
 								stroke="currentColor"
-								className="w-5 h-5"
+								className="w-[0.85rem] h-[0.85rem] flex align-middle"
 							>
 								<path
 									strokeLinecap="round"
@@ -77,10 +80,14 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 			</div>
 			<SyntaxHighlighter
 				language={language}
-				style={nightOwl}
+				style={isDark ? darkTheme : lightTheme}
 				wrapLongLines
 				wrapLines
+				children={value}
 				CodeTag={"code"}
+				lineProps={{
+					style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
+				}}
 				codeTagProps={{
 					style: {
 						fontFamily: "Jetbrains Mono",
@@ -89,16 +96,13 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 				customStyle={{
 					margin: 0,
 					width: "100%",
-					background: "transparent",
 					padding: "1rem",
 					fontFamily: "Jetbrains Mono",
+					borderRadius: "0 0",
 				}}
-			>
-				{value}
-			</SyntaxHighlighter>
+			/>
 		</div>
 	);
 });
-CodeBlock.displayName = "CodeBlock";
 
 export { CodeBlock };

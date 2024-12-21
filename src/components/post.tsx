@@ -120,7 +120,7 @@ const Post = ({ post }: PostParams) => {
 					h1({ ...props }) {
 						return (
 							<>
-								<h1 {...props} className="text-4xl font-thin mb-4" />
+								<h1 {...props} className="text-4xl font-thin mb-2" />
 								<span>{post.date}</span>
 							</>
 						);
