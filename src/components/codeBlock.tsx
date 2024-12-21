@@ -36,7 +36,7 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 	return (
 		<div className="font-sans shadow-lg w-full rounded-3xl">
 			<div className="w-full rounded-md">
-				<div className="flex justify-between bg-slate-100 w-full px-3 py-1 font-code items-center">
+				<div className="flex justify-between bg-slate-100 dark:bg-gray-500 dark:text-neutral-100 w-full px-3 py-1 font-code items-center">
 					<div className="flex items-center gap-x-3">
 						<img
 							src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${language}/${language}-original.svg`}
@@ -46,13 +46,13 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 								(e.target as HTMLImageElement).src = "/file.svg";
 							}}
 						/>
-						<span className="lowercase text-black flex align-middle font-light text-sm">
+						<span className="lowercase text-black dark:text-white flex align-middle font-light text-sm">
 							{language}
 						</span>
 					</div>
 					<button
 						onClick={() => void copyToClipboard()}
-						className="w-[0.85rem] h-[0.85rem] hover:text-[#ff3399] text-gray-500 transition-all duration-200"
+						className="w-[0.85rem] h-[0.85rem] hover:text-[#ff3399] text-gray-500 dark:text-neutral-100 transition-all duration-200"
 					>
 						{copySuccess ? (
 							<svg

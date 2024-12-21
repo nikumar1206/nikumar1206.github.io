@@ -15,7 +15,7 @@ To ensure we can follow along, let's assume we have the following:
 1. Access to a computer (no duh), but specifically a POSIX-compliant one, with Mac OS or Linux.
 1. Preferably use CPython as your Python implementation
    - Find your Python Implementation using this nifty bash command
-   ```python
+   ```bash
    python -c "import platform; print(platform.python_implementation())"
    ```
 1. A python file containing the following:
