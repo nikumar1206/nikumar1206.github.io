@@ -19,7 +19,7 @@ const Nav = () => {
       `}
 			>
 				<div className="flex flex-row justify-around items-center align-middle h-full">
-					<div className="flex ">
+					<div className="flex">
 						<ul className="list-none flex items-center gap-x-1">
 							<li>
 								<Link
