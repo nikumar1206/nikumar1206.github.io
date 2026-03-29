@@ -1,4 +1,4 @@
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
@@ -7,6 +7,7 @@ const __dirname = dirname(__filename);
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 	plugins: [react()],
 	server: {
 		host: true,
