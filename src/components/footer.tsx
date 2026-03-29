@@ -13,7 +13,7 @@ const Footer = () => {
 			} h-[3rem] fixed left-0 right-0 bottom-0 backdrop-blur-lg z-[2] flex flex-row justify-around items-center w-full`}
 		>
 			<div className="flex gap-x-1">
-				<span>© 2024 by Nikhil Kumar </span>
+				<span>© 2026 by Nikhil Kumar </span>
 				<span className="hidden sm:inline">- All rights reserved.</span>
 			</div>
 			<div className="flex gap-x-4">
