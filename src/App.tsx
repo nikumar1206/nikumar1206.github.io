@@ -1,32 +1,17 @@
 import { AnimatePresence } from "framer-motion";
-import { useContext, useEffect, useState } from "react";
+import { lazy, Suspense, useContext, useEffect, useState } from "react";
 import { Route, Router, Switch } from "wouter";
-import {
-	BaseLocationHook,
-	navigate,
-	useLocationProperty,
-} from "wouter/use-location";
+import { useHashLocation } from "wouter/use-hash-location";
 import Footer from "./components/footer";
 import Nav from "./components/nav";
-import Post from "./components/post";
-import Posts from "./components/posts";
-import Projects from "./components/projects";
-import Splash from "./components/splash";
+const Post = lazy(() => import("./components/post"));
+const Posts = lazy(() => import("./components/posts"));
+const Projects = lazy(() => import("./components/projects"));
+const Splash = lazy(() => import("./components/splash"));
 import { ThemeContext } from "./context/themeContext";
 import { allPosts } from "./shared/posts";
 function App() {
 	const [theme, setTheme] = useState(useContext(ThemeContext).theme);
-
-	const hashLocation = () => window.location.hash.replace(/^#/, "") || "/";
-
-	const hashNavigate = (to: string) => {
-		navigate("#" + to);
-	};
-
-	const useHashLocation = () => {
-		const location = useLocationProperty(hashLocation);
-		return [location, hashNavigate];
-	};
 
 	useEffect(() => {
 		window.localStorage.setItem("theme", theme);
@@ -46,7 +31,7 @@ function App() {
 				const file = await fetch(`/post${post.id}.md`);
 				const content = await file.text();
 				post.body = content;
-			})
+			}),
 		)
 			.then(() => {
 				console.log("Fetched all posts.");
@@ -58,7 +43,7 @@ function App() {
 
 	return (
 		<ThemeContext.Provider value={{ theme, setTheme }}>
-			<Router hook={useHashLocation as BaseLocationHook}>
+			<Router hook={useHashLocation}>
 				<div
 					className={`${
 						theme === "dark"
@@ -76,6 +61,7 @@ function App() {
 							}
 						}}
 					>
+						<Suspense>
 						<Switch>
 							<Route path="/" component={Splash} />
 							<Route path="/projects" component={Projects} />
@@ -87,7 +73,7 @@ function App() {
 											id={params.id}
 											post={
 												allPosts.find(
-													(post) => String(post.id) === params.id
+													(post) => String(post.id) === params.id,
 												) ?? null
 											}
 										/>
@@ -95,6 +81,7 @@ function App() {
 								}}
 							</Route>
 						</Switch>
+						</Suspense>
 					</AnimatePresence>
 					<Footer />
 				</div>

@@ -1,3 +1,4 @@
+import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
@@ -8,7 +9,7 @@ const __dirname = dirname(__filename);
 // https://vitejs.dev/config/
 export default defineConfig({
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-	plugins: [react()],
+	plugins: [tailwindcss(), react()],
 	server: {
 		host: true,
 	},

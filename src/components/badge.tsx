@@ -1,4 +1,4 @@
-import { Badge } from "../shared/projects";
+import type { Badge } from "../shared/projects";
 
 const Badge = ({ name, value }: Badge) => {
 	return (

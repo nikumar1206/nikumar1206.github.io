@@ -40,8 +40,8 @@ const CodeBlock = memo(({ language, value }: CodeBlockProps) => {
 					<div className="flex items-center gap-x-3">
 						<img
 							src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${language}/${language}-original.svg`}
-							width={20}
-							className="my-0 p-0"
+							className="m-0! inline-block"
+							width={12}
 							onError={(e) => {
 								(e.target as HTMLImageElement).src = "/file.svg";
 							}}

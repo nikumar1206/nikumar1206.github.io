@@ -14,7 +14,7 @@ const Post = ({ post }: PostParams) => {
 
 	const isDark = theme === "dark";
 	const [markdownContent, setMarkdownContent] = useState<string>(
-		post?.body ?? ""
+		post?.body ?? "",
 	);
 
 	useEffect(() => {
@@ -42,7 +42,7 @@ const Post = ({ post }: PostParams) => {
 
 	if (!post) {
 		return (
-			<div className="max-w-[64rem] mx-auto p-6 mt-10 font-posts">
+			<div className="max-w-5xl mx-auto p-6 mt-10 font-posts">
 				<h1 className="text-4xl font-bold">404</h1>
 				<p className="text-xl mt-4">Post not found.</p>
 			</div>
@@ -51,86 +51,85 @@ const Post = ({ post }: PostParams) => {
 
 	return (
 		<div
-			className={`max-w-[64rem] mx-auto p-6 ${
-				isDark ? "" : ""
-			} mt-10 font-posts`}
+			className={`max-w-5xl mx-auto p-6 ${isDark ? "" : ""} mt-10 font-posts`}
 		>
-			<ReactMarkdown
-				className="max-w-none prose-pre:p-0 prose-h2:mt-[1em] prose-h1:text-5xl prose prose-fuschia dark:prose-invert"
-				components={{
-					img({ ...props }) {
-						return (
-							<div className="flex mx-auto flex-col">
-								<img
-									{...props}
-									className="m-0 mx-auto w-[45%] h-[25%] rounded-md"
-								/>
-								<span className="text-center">
-									{/* eslint-disable-next-line */}
-									{props.alt!}
+			<div className="max-w-none prose-pre:p-0 prose-h2:mt-[1em] prose-h1:text-5xl prose prose-fuschia dark:prose-invert mb-14">
+				<ReactMarkdown
+					components={{
+						img({ ...props }) {
+							return (
+								<div className="flex mx-auto flex-col">
+									<img
+										{...props}
+										className="m-0 mx-auto w-[45%] h-[25%] rounded-md"
+									/>
+									<span className="text-center">
+										{/* eslint-disable-next-line */}
+										{props.alt!}
+									</span>
+								</div>
+							);
+						},
+						a({ ...props }) {
+							return (
+								<span className="inline-flex">
+									<a
+										{...props}
+										className=" hover:underline transition-all duration-200"
+										target="_blank"
+										rel="noopener noreferrer"
+									/>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="12"
+										height="12"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="2"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										className="align-middle ml-[.15rem]"
+									>
+										<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+										<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+									</svg>
 								</span>
-							</div>
-						);
-					},
-					a({ ...props }) {
-						return (
-							<span className="inline-flex">
-								<a
+							);
+						},
+						code({ className, children, ...props }) {
+							const match = /language-(\w+)/.exec(className ?? "");
+							return match ? (
+								<CodeBlock
+									language={match[1] ? match[1] : ""}
+									value={String(children).replace(/\n$/, "")}
 									{...props}
-									className=" hover:underline transition-all duration-200"
-									target="_blank"
-									rel="noopener noreferrer"
 								/>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="12"
-									height="12"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									strokeWidth="2"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									className="align-middle ml-[.15rem]"
+							) : (
+								<code
+									{...props}
+									style={{ color: isDark ? "#ff63c3" : "#e60073" }}
+									className={
+										"font-code text-sm bg-white rounded-md p-[.15rem] dark:border-[rgb(100,111,117,.2)] dark:bg-[#1a1a1a] dark:text-[#ff63c3] dark:p-[.15rem] dark:rounded-md"
+									}
 								>
-									<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-									<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-								</svg>
-							</span>
-						);
-					},
-					code({ className, children, ...props }) {
-						const match = /language-(\w+)/.exec(className ?? "");
-						return match ? (
-							<CodeBlock
-								language={match[1] ? match[1] : ""}
-								value={String(children).replace(/\n$/, "")}
-								{...props}
-							/>
-						) : (
-							<code
-								{...props}
-								style={{ color: isDark ? "#ff63c3" : "#e60073" }}
-								className={
-									"font-code text-sm bg-white rounded-md p-[.15rem] dark:border-[rgb(100,111,117,.2)] dark:bg-[#1a1a1a] dark:text-[#ff63c3] dark:p-[.15rem] dark:rounded-md"
-								}
-							>
-								{children?.toLocaleString().replace("`", "")}
-							</code>
-						);
-					},
-					h1({ ...props }) {
-						return (
-							<>
-								<h1 {...props} className="text-4xl font-thin mb-2" />
-								<span>{post.date}</span>
-							</>
-						);
-					},
-				}}
-			>
-				{markdownContent}
-			</ReactMarkdown>
+									{children?.toLocaleString().replace("`", "")}
+								</code>
+							);
+						},
+						h1({ ...props }) {
+							return (
+								<>
+									<h1 {...props} className="text-4xl font-thin mb-2" />
+									<span>{post.date}</span>
+								</>
+							);
+						},
+					}}
+				>
+					{markdownContent}
+				</ReactMarkdown>
+			</div>
 		</div>
 	);
 };

@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 type BadgeName =
 	| "Platform"
 	| "Language"
@@ -17,7 +19,7 @@ type BadgeName =
 
 export interface Badge {
 	name: BadgeName;
-	value: string | JSX.Element;
+	value: string | ReactNode;
 }
 
 export interface ProjectData {

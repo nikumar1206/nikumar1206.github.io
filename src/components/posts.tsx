@@ -10,7 +10,6 @@ import {
 import { allPosts } from "@/shared/posts";
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
-import { Link } from "wouter";
 import { Input } from "./ui/input";
 const routeVariants = {
 	initial: {
@@ -67,29 +66,28 @@ const Posts = () => {
 				<TableBody>
 					{filteredPosts.map((post) => {
 						return (
-							<Link key={post.id} to={post.link}>
-								<TableRow
-									key={post.id}
-									className="border-b-[1px] border-black dark:border-white cursor-pointer"
-								>
-									<TableCell className="">{post.date}</TableCell>
-									<TableCell className="font-normal text-[1rem]">
-										{post.title}
-									</TableCell>
-									<TableCell className="flex gap-x-1 flex-wrap gap-y-1">
-										{post.tags.map((tag, i) => {
-											return (
-												<span
-													className="bg-[var(--badge-bg)] text-[var(--badge-color)] uppercase font-bold px-1 py-1 rounded-sm align-middle text-xs"
-													key={i}
-												>
-													{tag}
-												</span>
-											);
-										})}
-									</TableCell>
-								</TableRow>
-							</Link>
+							<TableRow
+								key={post.id}
+								className="border-b border-black dark:border-white cursor-pointer"
+								onClick={() => (window.location.href = post.link)}
+							>
+								<TableCell>{post.date}</TableCell>
+								<TableCell className="font-normal text-[1rem]">
+									{post.title}
+								</TableCell>
+								<TableCell>
+									<div className="flex gap-x-1 flex-wrap gap-y-1">
+										{post.tags.map((tag, i) => (
+											<span
+												key={i}
+												className="bg-(--badge-bg) text-(--badge-color) uppercase font-bold px-1 py-1 rounded-sm text-xs"
+											>
+												{tag}
+											</span>
+										))}
+									</div>
+								</TableCell>
+							</TableRow>
 						);
 					})}
 				</TableBody>
