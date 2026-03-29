@@ -1,3 +1,3 @@
-# [nikhil-kumar.tk](https://nikhil-kumar.tk)
+# [nikhil.build](https://nikhil.build)
 
 My personal Website

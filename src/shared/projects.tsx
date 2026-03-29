@@ -155,7 +155,7 @@ export const allProjects: ProjectData[] = [
 		date: "2023-04-20",
 		description:
 			"Inspired by Japanese animation, Way of the Blade is a fighting game playable against a friend or a bot. Built in pure Javascript, with no frameworks or libraries.",
-		liveLink: "https://nikhil-kumar.tk/Way-of-The-Blade/",
+		liveLink: "https://nikhil.build/Way-of-The-Blade/",
 		githubLink: "https://github.com/nikumar1206/Way-of-The-Blade/",
 		imageUrl: "/way_of_the_blade.webp",
 		tags: ["JavaScript", "HTML/CSS"],
@@ -189,12 +189,12 @@ export const allProjects: ProjectData[] = [
 			// 	value: (
 			// 		<div className="inline-flex gap-x-2 align-middle leading-4">
 			// 			<a
-			// 				href="https://nikhil-kumar.tk/Way-of-The-Blade/"
+			// 				href="https://nikhil.build/Way-of-The-Blade/"
 			// 				target="_blank"
 			// 				rel="noreferrer"
 			// 				className="text-[.8rem] hover:underline"
 			// 			>
-			// 				@nikhil-kumar.tk/Way-of-The-Blade/
+			// 				@nikhil.build/Way-of-The-Blade/
 			// 			</a>
 			// 			<FiExternalLink style={{ fontSize: "15" }} />
 			// 		</div>
@@ -208,7 +208,7 @@ export const allProjects: ProjectData[] = [
 		date: "2023-09-10",
 		description:
 			"My personal website, built with some technologies I am actively experimenting with and host to my blog. This website is always a work in progress.",
-		liveLink: "https://nikhil-kumar.tk/",
+		liveLink: "https://nikhil.build/",
 		githubLink: "https://github.com/nikumar1206/nikumar1206.github.io",
 		imageUrl: "/portfolio.webp",
 		darkimageUrl: "/portfolio_dark.webp",
@@ -227,7 +227,7 @@ export const allProjects: ProjectData[] = [
 			// 	value: (
 			// 		<div className="inline-flex gap-x-2 align-middle leading-4">
 			// 			<a
-			// 				href="https://nikhil-kumar.tk/"
+			// 				href="https://nikhil.build/"
 			// 				target="_blank"
 			// 				rel="noreferrer"
 			// 				className="text-[.8rem] hover:underline"
@@ -248,7 +248,7 @@ export const allProjects: ProjectData[] = [
 			// 				rel="noreferrer"
 			// 				className="text-[.8rem] hover:underline"
 			// 			>
-			// 				@nikhil-kumar.tk
+			// 				@nikhil.build
 			// 			</a>
 			// 			<FiExternalLink style={{ fontSize: "15" }} />
 			// 		</div>
