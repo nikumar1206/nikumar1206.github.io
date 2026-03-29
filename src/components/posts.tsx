@@ -10,6 +10,7 @@ import {
 import { allPosts } from "@/shared/posts";
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
+import { useLocation } from "wouter";
 import { Input } from "./ui/input";
 const routeVariants = {
 	initial: {
@@ -27,6 +28,8 @@ const routeVariants = {
 } as Variants;
 
 const Posts = () => {
+	const [_, navigate] = useLocation();
+
 	const [filteredPosts, setFilteredPosts] = useState(allPosts);
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value.toLowerCase();
@@ -50,7 +53,7 @@ const Posts = () => {
 				onChange={handleInputChange}
 				placeholder="Search by tags or title"
 				type="text"
-				className="border-black dark:border-white flex self-end w-[300px] transition-all duration-300 ease-in-out focus:ring-2 focus:ring-black dark:focus:ring-white focus:outline-none"
+				className="border-black dark:border-white flex self-end w-75 transition-all duration-300 ease-in-out focus:ring-2 focus:ring-black dark:focus:ring-white focus:outline-none"
 			/>
 			<Table className="px-4 py-4 border-black">
 				{filteredPosts.length === 0 && (
@@ -69,7 +72,7 @@ const Posts = () => {
 							<TableRow
 								key={post.id}
 								className="border-b border-black dark:border-white cursor-pointer"
-								onClick={() => (window.location.href = post.link)}
+								onClick={() => navigate(post.link)}
 							>
 								<TableCell>{post.date}</TableCell>
 								<TableCell className="font-normal text-[1rem]">

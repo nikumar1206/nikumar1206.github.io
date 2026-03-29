@@ -36,12 +36,20 @@
 	--animate-accordion-up: accordion-up 0.2s ease-out;
 
 	@keyframes accordion-down {
-		from { height: 0; }
-		to { height: var(--radix-accordion-content-height); }
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--radix-accordion-content-height);
+		}
 	}
 	@keyframes accordion-up {
-		from { height: var(--radix-accordion-content-height); }
-		to { height: 0; }
+		from {
+			height: var(--radix-accordion-content-height);
+		}
+		to {
+			height: 0;
+		}
 	}
 }
 
@@ -129,7 +137,8 @@ code {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	box-shadow: 0 -23px 0 var(--theme-ui-colors-toggleIcon, var(--light-text)),
+	box-shadow:
+		0 -23px 0 var(--theme-ui-colors-toggleIcon, var(--light-text)),
 		0 23px 0 var(--theme-ui-colors-toggleIcon, var(--light-text)),
 		23px 0 0 var(--theme-ui-colors-toggleIcon, var(--light-text)),
 		-23px 0 0 var(--theme-ui-colors-toggleIcon, var(--light-text)),
@@ -176,7 +185,8 @@ code {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	box-shadow: 0 -23px 0 var(--theme-ui-colors-toggleIcon, #2d3748),
+	box-shadow:
+		0 -23px 0 var(--theme-ui-colors-toggleIcon, #2d3748),
 		0 23px 0 var(--theme-ui-colors-toggleIcon, #2d3748),
 		23px 0 0 var(--theme-ui-colors-toggleIcon, #2d3748),
 		-23px 0 0 var(--theme-ui-colors-toggleIcon, #2d3748),
@@ -198,8 +208,8 @@ code {
 @layer components {
 	.link-underline {
 		border-bottom-width: 0;
-		background-image: linear-gradient(transparent, transparent),
-			linear-gradient(black, black);
+		background-image:
+			linear-gradient(transparent, transparent), linear-gradient(black, black);
 		background-size: 0 2px;
 		background-position: 100% 100%;
 		background-repeat: no-repeat;
@@ -207,8 +217,8 @@ code {
 	}
 
 	.link-underline-black {
-		background-image: linear-gradient(transparent, transparent),
-			linear-gradient(#f2c, #f2c);
+		background-image:
+			linear-gradient(transparent, transparent), linear-gradient(#f2c, #f2c);
 	}
 
 	.footer {
@@ -233,7 +243,7 @@ code {
 		@apply font-semibold leading-[1.33rem] underline underline-offset-4 decoration-[#525252] decoration-[4px] pb-2 text-xl;
 	}
 	.prose-dark {
-		@apply !font-[var(--light-text)];
+		@apply font-(--light-text)!;
 	}
 }
 
@@ -324,7 +334,8 @@ code {
 }
 
 .link-underline {
-	background-image: linear-gradient(transparent, transparent),
+	background-image:
+		linear-gradient(transparent, transparent),
 		linear-gradient(var(--teal), var(--teal));
 	background-size: 0 2px;
 	background-position: 0 100%;

@@ -7,9 +7,9 @@ const Nav = () => {
 	const { theme } = useTheme();
 	const isDark = theme === "dark";
 	return (
-		<div className="h-[3rem]">
+		<div className="h-12">
 			<nav
-				className={`block fixed w-full z-[2] h-[3rem] backdrop-blur-[4px]
+				className={`block fixed w-full z-2 h-12 backdrop-blur-xs
       ${
 				isDark
 					? "text-white bg-[#20202380]"

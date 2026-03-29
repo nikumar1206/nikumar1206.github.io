@@ -4,12 +4,12 @@ import { Route, Router, Switch } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
 import Footer from "./components/footer";
 import Nav from "./components/nav";
+import { ThemeContext } from "./context/themeContext";
+import { allPosts } from "./shared/posts";
 const Post = lazy(() => import("./components/post"));
 const Posts = lazy(() => import("./components/posts"));
 const Projects = lazy(() => import("./components/projects"));
 const Splash = lazy(() => import("./components/splash"));
-import { ThemeContext } from "./context/themeContext";
-import { allPosts } from "./shared/posts";
 function App() {
 	const [theme, setTheme] = useState(useContext(ThemeContext).theme);
 
@@ -43,7 +43,7 @@ function App() {
 
 	return (
 		<ThemeContext.Provider value={{ theme, setTheme }}>
-			<Router hook={useHashLocation}>
+			<Router hook={useHashLocation} hrefs={(href) => `#${href}`}>
 				<div
 					className={`${
 						theme === "dark"
@@ -62,25 +62,26 @@ function App() {
 						}}
 					>
 						<Suspense>
-						<Switch>
-							<Route path="/" component={Splash} />
-							<Route path="/projects" component={Projects} />
-							<Route path="/posts" component={Posts} />
-							<Route path="/post/:id">
-								{(params) => {
-									return (
-										<Post
-											id={params.id}
-											post={
-												allPosts.find(
-													(post) => String(post.id) === params.id,
-												) ?? null
-											}
-										/>
-									);
-								}}
-							</Route>
-						</Switch>
+							<Switch>
+								<Route path="/" component={Splash} />
+								<Route path="/projects" component={Projects} />
+								<Route path="/posts" component={Posts} />
+								<Route path="/post/:id">
+									{(params) => {
+										console.log("called with param", [params]);
+										return (
+											<Post
+												id={params.id}
+												post={
+													allPosts.find(
+														(post) => String(post.id) === params.id,
+													) ?? null
+												}
+											/>
+										);
+									}}
+								</Route>
+							</Switch>
 						</Suspense>
 					</AnimatePresence>
 					<Footer />
